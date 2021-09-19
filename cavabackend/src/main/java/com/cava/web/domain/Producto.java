@@ -17,9 +17,9 @@ public class Producto {
 	private String nombre;
 	private Integer cantidad;
 	private Double precio;
-	//private Categoria categoria;
-	//private Vendedor vendedor;
 	private Date created;
+	private CategoriaProducto categoria;
+	private Vendedor vendedor;
 	
 	public Long getId() {
 		return id;
@@ -51,4 +51,23 @@ public class Producto {
 	public void setCreated(Date created) {
 		this.created = created;
 	}
+	
+	
+	
+	public CategoriaProducto getCategoria() {
+		return categoria;
+	}
+	
+	public void setCategoria(CategoriaProducto categoria) {
+		this.categoria = categoria;
+	}
+	
+	public Vendedor getVendedor() {
+		return vendedor;
+	}
+	
+	public void setVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
+	}
+	
 }

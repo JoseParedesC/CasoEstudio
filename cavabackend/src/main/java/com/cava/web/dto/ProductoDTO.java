@@ -2,13 +2,16 @@ package com.cava.web.dto;
 
 import java.util.Date;
 
+import com.cava.web.domain.CategoriaProducto;
+import com.cava.web.domain.Vendedor;
+
 public class ProductoDTO {
 	private Long id;
 	private String nombre;
 	private Integer cantidad;
 	private Double precio;
-	//private Categoria categoria;
-	//private Vendedor vendedor;
+	private CategoriaProducto categoria;
+	private Vendedor vendedor;
 	private Date created;
 	
 	public Long getId() {
@@ -40,5 +43,22 @@ public class ProductoDTO {
 	}
 	public void setCreated(Date created) {
 		this.created = created;
+	}
+/*Diony el chico bonito*/
+	
+	public CategoriaProducto getCategoria() {
+		return categoria;
+	}
+	
+	public void setCategoria(CategoriaProducto categoria) {
+		this.categoria = categoria;
+	}
+	
+	public Vendedor getVendedor() {
+		return vendedor;
+	}
+	
+	public void setVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
 	}
 }
