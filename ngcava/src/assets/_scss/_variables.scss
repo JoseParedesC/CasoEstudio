@@ -1,0 +1,24 @@
+//Colores
+$white: #ffffff;
+$black: #000000;
+$gray: #4d4d4d;
+
+//Fonts
+@font-face{
+    font-family: linotype;
+    src: url("../fonts/DidotLH_Bold.otf");
+}
+
+@font-face {
+    font-family: slate;
+    src: url("../fonts/slate_pro_light.otf");
+}
+
+@font-face {
+    font-family: 'Balerno Serif Bold Free';
+    src: url('../fonts/Balerno-RgF.eot');
+}
+
+$linoType: 'linoType', italic;
+$slate: 'slate';
+$balermo: 'Balerno', sans-serif;

@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+@import './assets/_scss/variables';
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar{
+    display: flex;
+    padding: 20px 30px;
+    box-shadow: 0 1px 5px $gray;
+    .controls{
+        display: flex;
+        justify-content: space-between;
+        width: 20%;
+        i{
+            font-size: 20px;
+        }
+    }
+}
+
+.hr{
+    text-align: center;
+    font-size: x-large;
+    margin-bottom: 10px;
+}
+
+.sub-hr{
+    text-align: center;
+    font-size: 25px;
+    margin: 10px 0;
+}
+
+//Start Text
+.title{
+    font-family: $linoType;
+    text-transform: uppercase;
+}
+
+.text-info{
+    font-family: $slate;
+}
+//End Text
+
+//Events
+.pointer{
+    cursor: pointer;
+}
+//End events
