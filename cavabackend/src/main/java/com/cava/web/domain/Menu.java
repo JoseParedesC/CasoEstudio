@@ -7,20 +7,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table( name = "menus" )
-public class Menus {
-	
+public class Menu {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
 	private String path;
 	private String tipoRol;
-	private Date create;
+	@Temporal( TemporalType.DATE )
+	private Date created;
 	
-	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -39,12 +46,10 @@ public class Menus {
 	public void setTipoRol(String tipoRol) {
 		this.tipoRol = tipoRol;
 	}
-	public Date getCreate() {
-		return create;
+	public Date getCreated() {
+		return created;
 	}
-	public void setCreate(Date create) {
-		this.create = create;
+	public void setCreated(Date created) {
+		this.created = created;
 	}
-	
-
 }

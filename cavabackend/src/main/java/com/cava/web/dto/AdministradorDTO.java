@@ -2,9 +2,7 @@ package com.cava.web.dto;
 
 import java.util.Date;
 
-import com.cava.web.domain.Usuarios;
-
-public class AdministradorDTO extends Usuarios{
+public class AdministradorDTO{
 
 	private Long id;
 	private String correo;

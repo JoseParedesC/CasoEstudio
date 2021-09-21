@@ -1,9 +1,8 @@
 package com.cava.web.dto;
 
 import com.cava.web.domain.CarroCompra;
-import com.cava.web.domain.Usuarios;
 
-public class ClienteDTO extends Usuarios{
+public class ClienteDTO{
 	private Long id;
 	private String correo;
 	private CarroCompra carroCompra;
