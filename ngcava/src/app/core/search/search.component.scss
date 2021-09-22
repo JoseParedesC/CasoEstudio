@@ -1,0 +1,36 @@
+.container-button{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    .container-items{
+        box-shadow: 0 3px 12px rgba(0,0,0,.175);
+        width: 50%;
+        padding: 10px 5px;
+
+        input{
+            border: 0;
+            width: 85%;
+            padding-left: 8px;
+        }
+
+        button{
+            border-radius: 10px;
+        }
+    }
+}
+
+.container-categories{
+    padding: 0 15px;
+}
+
+.container-list{
+    display: contents;
+    list-style: none;
+    li{
+        margin-bottom: 8px;
+    }
+}
+
+input:focus{
+    outline: none;
+}
