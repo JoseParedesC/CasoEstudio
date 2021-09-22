@@ -46,4 +46,13 @@
 .pointer{
     cursor: pointer;
 }
+
+.icons:hover{
+    color: $gray;
+}
+
+.button:hover{
+    background: $gray;
+    border-color: $gray;
+}
 //End events
