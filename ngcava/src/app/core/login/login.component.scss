@@ -1,0 +1,72 @@
+@import "../../../assets/_scss/variables";
+
+.container-login {
+    background: url("../../../assets/img/bg_login_desktop.jpg") no-repeat left;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+
+    .container-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        .form {
+            background: inherit;
+            height: 420px;
+            width: 350px;
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            .form-group{
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                margin-bottom: 10px;
+                .form-control{
+                    background: transparent;
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+}
+
+.bx{
+    font-size: 20px;
+}
+
+button{
+    border-radius: 10px;
+}
+
+.form::before {
+    content: "";
+    position: absolute;
+    background: inherit;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+    filter: blur(10px);
+    margin: -20px;
+}
+
+input::placeholder{
+    color: $black;
+}
+
+.form-control:focus{
+    outline: transparent !important;
+}
+
+@media only screen and (max-width: 500px) {
+    .form {
+        background: url("../../../assets/img/bg_login_mobile.jpg") no-repeat left;
+    }
+}

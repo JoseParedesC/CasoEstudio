@@ -1,36 +1,68 @@
-.container-button{
+@import "../../../assets/_scss/variables";
+
+.container-button {
     display: flex;
     justify-content: center;
     margin: 20px 0;
-    .container-items{
-        box-shadow: 0 3px 12px rgba(0,0,0,.175);
-        width: 50%;
+    .container-items {
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.175);
+        width: 60%;
         padding: 10px 5px;
 
-        input{
+        input {
             border: 0;
-            width: 85%;
+            width: 88%;
             padding-left: 8px;
+            font-family: $slate;
+            font-size: 18px;
         }
 
-        button{
+        button {
             border-radius: 10px;
         }
     }
 }
 
-.container-categories{
+.container-categories {
     padding: 0 15px;
 }
 
-.container-list{
+.container-list {
     display: contents;
     list-style: none;
-    li{
-        margin-bottom: 8px;
+    li {
+        margin-bottom: 12px;
+        padding: 5px 0;
+        width: 60%;
     }
 }
 
-input:focus{
+.product-grid {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.item-list:hover::after {
+    width: 100%;
+}
+
+.item-list::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 1px;
+    background: $orange;
+    transition: width 0.3s;
+}
+
+input:focus {
     outline: none;
+}
+
+@media (max-width: 500px) {
+    .product-grid {
+        grid-template-columns: repeat(1, 2fr);
+        align-items: center;
+    }
 }

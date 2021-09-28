@@ -1,4 +1,4 @@
-<div>
+<div style="margin-top: 8rem;">
     <div class="container">
         <div class="container-button">
             <div class="container-items">
@@ -8,19 +8,22 @@
         </div>
     </div>    
     <div class="row" style="margin: 0;">
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <div class="container-categories">
                 <h5 class="title">Categorias</h5>
                 <ul class="container-list">
-                    <li class="text-info text-dark h4 pointer">Cervezas</li>
-                    <li class="text-info text-dark h4 pointer">Vinos</li>
-                    <li class="text-info text-dark h4 pointer">Wiskhy</li>
-                    <li class="text-info text-dark h4 pointer">Ñequeñeque</li>
+                    <li *ngFor="let categoria of categorias"
+                        class="text-info text-dark h4 pointer item-list">{{ categoria.nombre }}</li>
                 </ul>
             </div>
         </div>
-        <div class="col-lg-9">
-            <h3 class="text-info text-center text-dark">Acá los productos</h3>
+        <div class="col-lg-10">
+            <div class="product-grid">
+                <div class="card shadow-sm">Producto</div>
+                <div class="card shadow-sm">Producto</div>
+                <div class="card shadow-sm">Producto</div>
+                <div class="card shadow-sm">Producto</div>
+            </div>
         </div>
     </div>
 </div>

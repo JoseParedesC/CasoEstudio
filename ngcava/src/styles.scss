@@ -31,14 +31,23 @@
     margin: 10px 0;
 }
 
+.card{
+    border: 0;
+    margin: 0 5px;
+    padding: 8px;
+    min-height: 200px;
+}
+
 //Start Text
 .title{
-    font-family: $linoType;
-    text-transform: uppercase;
+    font-family: $linoType !important;
+    text-transform: uppercase !important;
+    font-size: 25px;
 }
 
 .text-info{
-    font-family: $slate;
+    font-family: $slate !important;
+    font-size: 20px !important;
 }
 //End Text
 
@@ -48,11 +57,12 @@
 }
 
 .icons:hover{
-    color: $gray;
+    color: $orange;
 }
 
 .button:hover{
-    background: $gray;
-    border-color: $gray;
+    background: $orange;
+    border-color: $orange;
 }
 //End events
+body{ background: #fff; }

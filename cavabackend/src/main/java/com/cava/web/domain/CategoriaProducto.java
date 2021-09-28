@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table( name = "categoria_producto")
@@ -18,8 +20,18 @@ public class CategoriaProducto {
 	private String nombre;
 	@OneToOne( mappedBy = "categoria" )
 	private Producto producto;
+	@Temporal( TemporalType.DATE )
 	private Date created;
 	
+	public CategoriaProducto() {}
+	
+	public CategoriaProducto(Long id, String nombre, Date created) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.created = created;
+		this.producto = null;
+	}
 	public Long getId() {
 		return id;
 	}
