@@ -1,66 +1,92 @@
-@import './assets/_scss/variables';
+@import "./assets/_scss/variables";
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-.navbar{
+.navbar {
     display: flex;
     padding: 20px 30px;
     box-shadow: 0 1px 5px $gray;
-    .controls{
+    .controls {
         display: flex;
         justify-content: space-between;
         width: 20%;
-        i{
+        i {
             font-size: 20px;
         }
     }
 }
 
-.hr{
+.hr {
     text-align: center;
     font-size: x-large;
     margin-bottom: 10px;
 }
 
-.sub-hr{
+.sub-hr {
     text-align: center;
     font-size: 25px;
     margin: 10px 0;
 }
 
-.card{
+.card {
     border: 0;
-    margin: 0 5px !important;
     padding: 8px;
     min-height: 200px;
 }
 
-//Start Text
-.title{
-    font-family: $linoType !important;
-    text-transform: uppercase !important;
-    font-size: 25px;
+.bg-orange {
+    background: $orange;
 }
 
-.text{
+.full {
+    width: 100%;
+}
+
+//Start Text
+.title {
+    font-family: $linoType !important;
+    text-transform: uppercase !important;
+}
+
+.text {
     font-family: $slate !important;
-    font-size: 20px !important;
+    // font-size: 20px !important;
 }
 //End Text
 
+//Alerts
+.toast {
+    position: absolute;
+    top: 10px;
+    z-index: 999999;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+
+    .toast-header{
+        color: $black;
+    }
+
+    .toast-body {
+        background: $white !important;
+        color: $black;
+        font-size: 1rem;
+    }
+}
+
 //Events
-.pointer{
+.pointer {
     cursor: pointer;
 }
 
-.icons:hover{
+.icons:hover {
     color: $orange;
 }
 
-.button:hover{
+.button:hover {
     background: $orange;
     border-color: $orange;
 }

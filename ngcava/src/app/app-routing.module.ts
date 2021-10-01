@@ -5,6 +5,7 @@ import { LayoutComponent } from './core/layout/layout.component';
 import { LoginComponent } from './core/login/login.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { SearchComponent } from './core/search/search.component';
+import { SignInComponent } from './core/sign-in/sign-in.component';
 
 const ROUTES : Routes = [
     {
@@ -16,7 +17,8 @@ const ROUTES : Routes = [
             { path: 'search', component: SearchComponent }
         ]
     },
-    { path: 'login', component: LoginComponent },
+    { path: 'login/:persona', component: LoginComponent },
+    { path: 'sign-in', component: SignInComponent },
     { 
         path: 'vendedor',
         loadChildren: () => import('./vendedor/vendedor.module').then(v => v.VendedorModule)
