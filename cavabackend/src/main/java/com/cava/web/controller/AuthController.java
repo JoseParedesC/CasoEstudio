@@ -24,8 +24,11 @@ public class AuthController {
 	@PostMapping
 	public ResponseEntity<?> saveUser(@RequestBody UsuarioDTO usuario){
 		Map<String, Object> map = authService.saveUser(usuario);
-		return new ResponseEntity<>(map.get("message"), Boolean.parseBoolean(map.get("valid").toString()) ? 
-				HttpStatus.OK : HttpStatus.BAD_REQUEST);
+		if(Boolean.parseBoolean(map.get("valid").toString())) {
+			return new ResponseEntity<>(map, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(map.get("message"), HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	@PostMapping("/login")

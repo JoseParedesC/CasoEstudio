@@ -41,6 +41,9 @@ public class AuthService {
 						usuario.getTipoDocumento(), usuario.getNroDocumento(), usuario.getTelefono(), usuario.getPassword(), 
 						Constantes.CLIENTE.toString(), Constantes.HABILITADO.toString(), carroCompra);
 				clienteRepository.save(cliente);
+				map.put("valid", true);
+				map.put("message", cliente);
+				return map;
 			}else {
 				if(vendedorRepository.existsByNroDocumento(usuario.getNroDocumento())){
 					map.put("valid", false);
@@ -48,18 +51,18 @@ public class AuthService {
 					return map;
 				}
 				Vendedor vendedor = new Vendedor(usuario.getId(), usuario.getEmail(), usuario.getDireccion(), usuario.getNombre(), 
-						usuario.getApellido(), usuario.getTipoDocumento(), usuario.getNroDocumento(), usuario.getTelefono(), 
+						usuario.getApellido(), usuario.getTipoDocumento(), usuario.getNroDocumento(), usuario.getTelefono(), "",
 						usuario.getPassword(), Constantes.VENDEDOR.toString(), Constantes.HABILITADO.toString(), null, new Date());
 				vendedorRepository.save(vendedor);
+				map.put("valid", true);
+				map.put("message", vendedor);
+				return map;
 			}
-			map.put("valid", true);
-			map.put("message", "Su registro ha sido exitoso");
 		}catch(Exception e) {
 			map.put("valid", false);
 			map.put("message", "Upps algo ha salido mal. Intente nuevamente");
 			return map;
 		}
-		return map;
 	}
 	
 	public Map<String, Object> identifyUser(UsuarioDTO usuario) {

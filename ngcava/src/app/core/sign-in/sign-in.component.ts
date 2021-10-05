@@ -1,7 +1,9 @@
 import { Component } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { AlertService } from "../services/alert.service";
 import { AuthService } from "../services/auth.service";
+import { UserService } from "../services/user.service";
 
 @Component({
     selector: 'app-sign-in',
@@ -13,7 +15,9 @@ export class SignInComponent{
     constructor(
         private formBuilder: FormBuilder,
         private _auth: AuthService,
-        private _alert: AlertService
+        private _alert: AlertService,
+        private _user: UserService,
+        private router: Router
     ){}
 
     public signInForm = this.formBuilder.group({
@@ -31,8 +35,10 @@ export class SignInComponent{
 
     signIn(){
         this._auth.signInUser(this.signInForm.value)
-            .subscribe((response) => {
+            .subscribe((response : any) => {
+                this._user.setUser('cliente', response.body.message)
                 this._alert.success('Su registro ha sido exitoso');
+                this.router.navigateByUrl('/home');
             }, badRequest => {
                 this._alert.error(badRequest.error); 
             })

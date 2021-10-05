@@ -27,6 +27,7 @@ public class Vendedor{
 	@Column( name = "nro_documento" )
 	private String nroDocumento;
 	private String telefono;
+	private String foto;
 	private String password;
 	private String rol;
 	private String estado;
@@ -37,8 +38,8 @@ public class Vendedor{
 	public Vendedor() {}
 
 	public Vendedor(Long id, String correo, String direccion, String nombre, String apellido, String tipoDocumento,
-			String nroDocumento, String telefono, String password, String rol, String estado, List<Producto> productos,
-			Date created) {
+			String nroDocumento, String telefono, String foto, String password, String rol, String estado,
+			List<Producto> productos, Date created) {
 		super();
 		this.id = id;
 		this.correo = correo;
@@ -48,6 +49,7 @@ public class Vendedor{
 		this.tipoDocumento = tipoDocumento;
 		this.nroDocumento = nroDocumento;
 		this.telefono = telefono;
+		this.foto = foto;
 		this.password = password;
 		this.rol = rol;
 		this.estado = estado;
@@ -117,6 +119,14 @@ public class Vendedor{
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public String getPassword() {

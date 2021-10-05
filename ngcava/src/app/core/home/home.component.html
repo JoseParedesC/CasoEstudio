@@ -42,14 +42,14 @@
             </div>
         </div>
     </div>
-    <div class="hr title">Los productos que usted necesita</div>
+    <div class="hr title h2">Los productos que usted necesita</div>
     <div class="sub-hr text text-dark mb-4 mt-4">No busque más</div>
     <div class="info-container">
         <div class="group mb-3">
             <div class="group__text">
                 <div>
-                    <h4 class="title mb-3">Bebidas Artesanales</h4>
-                    <p class="text text-dark">
+                    <h4 class="title mb-3 h2">Bebidas Artesanales</h4>
+                    <p class="text text-dark h4">
                         Si es fanático de las bebidas artesanales, ha venido al lugar
                         correcto. En La Cava D&D proveemos a nuestros clientes con los
                         mejores productos artesanales del mercado para asegurar su buena
@@ -69,8 +69,8 @@
             </div>
             <div class="group__text">
                 <div>
-                    <h4 class="title mb-3">Productos de calidad</h4>
-                    <p class="text text-dark">
+                    <h4 class="title mb-3 h2">Productos de calidad</h4>
+                    <p class="text text-dark h4">
                         Ofrecemos a nuestros clientes Productos de calidad. Ponemos a su disposición
                         una amplia gama de opciones para que siempre vuelvan contentos.
                         Aquí podrá encontrar todo lo que busca, y con gusto pondremos
@@ -80,5 +80,31 @@
             </div>
         </div>
     </div>
+    <div class="info-container">
+        <div class="group bg-dark" style="height: 100%;">
+            <div class="group__text">
+                <div class="text-light">
+                    <h4 class="title mb-3 h2 text-light">SOBRE LA CAVA D&D</h4>
+                    <h5 class="title text-light">Un poco más de información</h5>
+                    <p class="text h4">
+                        Conozca a La Cava D&D, el proveedor líder en Cartagena. Desde 2020, hemos crecido a un 
+                        ritmo acelerado, aumentando nuestra clientela hasta convertirnos en líderes de la industria 
+                        bebidas. Brindamos a nuestros clientes sólo productos de alta calidad. Contáctenos hoy mismo
+                        y conviértase en otro de nuestros clientes satisfechos.
+                    </p>
+                </div>
+            </div>
+            <div class="group__img shadow-sm">
+                <img class="rounded" src="assets/img/about_us.jpg" alt="">
+            </div>
+        </div>
+    </div>
 </div>
 <app-footer></app-footer>
+<div class="container-vendedor d-flex justify-content-center align-items-center pointer">
+    <i class='bx bx-question-mark text-light' [matMenuTriggerFor]="menu"></i>
+    <mat-menu #menu="matMenu">
+        <button routerLink="/login/vendedor" mat-menu-item>Quiero inciar sesión como vendedor</button>
+        <button routerLink="/sign-in" mat-menu-item>Quiero registrarme como vendedor</button>
+    </mat-menu>
+</div>

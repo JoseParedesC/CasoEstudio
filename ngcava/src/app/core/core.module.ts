@@ -7,6 +7,7 @@ import { HomeComponent } from "./home/home.component";
 import { LayoutComponent } from "./layout/layout.component";
 import { LoginComponent } from "./login/login.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
+import { ProfileComponent } from "./profile/profile.component";
 import { SearchComponent } from "./search/search.component";
 import { SignInComponent } from "./sign-in/sign-in.component";
 
@@ -19,6 +20,7 @@ import { SignInComponent } from "./sign-in/sign-in.component";
         SearchComponent,
         LoginComponent,
         SignInComponent,
+        ProfileComponent,
         NotFoundComponent
     ],
     imports: [
@@ -33,6 +35,7 @@ import { SignInComponent } from "./sign-in/sign-in.component";
         SearchComponent,
         SignInComponent,
         LoginComponent,
+        ProfileComponent,
         NotFoundComponent
     ]
 })
