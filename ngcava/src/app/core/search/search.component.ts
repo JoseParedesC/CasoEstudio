@@ -15,10 +15,9 @@ export class SearchComponent implements OnInit{
     ngOnInit(){
         this._categoria.getAll()
             .subscribe((response) => {
-                console.log(response);
-                if(response.status === 200){
-                    this.categorias = response.body;
-                }
+                this.categorias = response.body;
+            }, badRequest => {
+                console.log(badRequest);
             });
     }
 }

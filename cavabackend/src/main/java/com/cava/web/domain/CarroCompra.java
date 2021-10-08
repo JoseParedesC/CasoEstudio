@@ -25,6 +25,16 @@ public class CarroCompra {
 	private List<CarroCompraItem> carroCompraItem;
 	private Date created;
 	
+	public CarroCompra() {}
+	
+	public CarroCompra(Long id, Double total, Cliente cliente, List<CarroCompraItem> carroCompraItem, Date created) {
+		super();
+		this.id = id;
+		this.total = total;
+		this.cliente = cliente;
+		this.carroCompraItem = carroCompraItem;
+		this.created = created;
+	}
 	public Long getId() {
 		return id;
 	}

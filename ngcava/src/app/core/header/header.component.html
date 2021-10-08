@@ -1,12 +1,19 @@
-<nav class="navbar navbar-light fixed-top" style="background-color: #fff; margin-bottom: 0;">
+<nav class="navbar navbar-light top" style="background-color: #fff; margin-bottom: 0;">
     <div>
         <h4 class="title">La cava D&D</h4>
         <span class="text text-dark">Proveedor lider en bedidas de calidad</span>
     </div>
     <div class="controls">
-        <i class='bx bx-home pointer icons' routerLink="/home"></i>
-        <i class='bx bx-search-alt pointer icons' routerLink="/search"></i>
+        <i class='bx bx-home pointer icons' routerLink="/home" routerLinkActive="active_router"></i>
+        <i class='bx bx-search-alt pointer icons' routerLink="/search" routerLinkActive="active_router"></i>
         <i class='bx bx-shopping-bag pointer icons'></i>
-        <i class='bx bx-user pointer icons' routerLink="/login"></i>
+        <i *ngIf="name === ''" class='bx bx-user pointer icons' routerLink="/login/cliente"></i>
+        <div *ngIf="name !== ''">
+            <i class='bx bx-log-out pointer icons' [matMenuTriggerFor]="menu"></i>
+            <mat-menu #menu="matMenu">
+                <button routerLink="/profile" mat-menu-item>Mi perfil</button>
+                <button routerLink="/login/cliente" mat-menu-item (click)="logOut()">Salir</button>
+            </mat-menu>
+        </div>
     </div>
 </nav>
