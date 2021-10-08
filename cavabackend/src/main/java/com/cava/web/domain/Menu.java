@@ -19,9 +19,25 @@ public class Menu {
 	private String nombre;
 	private String path;
 	private String tipoRol;
+	private String icons;
 	@Temporal( TemporalType.DATE )
 	private Date created;
 	
+	public Menu() {}
+	
+	public Menu(Long id, String nombre, String path, String tipoRol, String icons) {
+		this.id = id;
+		this.nombre = nombre;
+		this.path = path;
+		this.tipoRol = tipoRol;
+		this.icons = icons;
+	}
+	public String getIcons() {
+		return icons;
+	}
+	public void setIcons(String icons) {
+		this.icons = icons;
+	}
 	public Long getId() {
 		return id;
 	}

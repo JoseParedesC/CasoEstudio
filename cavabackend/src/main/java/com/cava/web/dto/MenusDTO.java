@@ -9,8 +9,27 @@ public class MenusDTO {
 	private String path;
 	private String tipoRol;
 	private Date create;
+	private String icons;
 	
 	
+	public MenusDTO() {}	
+	
+	public MenusDTO(Long id, String nombre, String path, String tipoRol, Date create, String icons) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.path = path;
+		this.tipoRol = tipoRol;
+		this.create = create;
+		this.icons = icons;
+	}
+
+	public String getIcons() {
+		return icons;
+	}
+	public void setIcons(String icons) {
+		this.icons = icons;
+	}
 	public Long getId() {
 		return id;
 	}
