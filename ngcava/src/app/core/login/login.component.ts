@@ -29,11 +29,16 @@ export class LoginComponent{
     }
 
     login(){
-        this.loginForm.get('rol').setValue(this.route.snapshot.params.persona);
+        const tipoPersona = this.route.snapshot.params.persona;
+        this.loginForm.get('rol').setValue(tipoPersona);
         this._auth.loginUser(this.loginForm.value)
             .subscribe((response) => {
-                this._user.setUser(this.route.snapshot.params.persona, response.body);
-                this.router.navigateByUrl('/home');
+                this._user.setUser(response.body);
+                if(tipoPersona === 'cliente' || 'administrador'){
+                    this.router.navigateByUrl(`${tipoPersona}/home`);
+                }else{
+                    this.router.navigateByUrl('/home');
+                }
             }, badRequest => {
                 this._alert.error(badRequest.error);
             })

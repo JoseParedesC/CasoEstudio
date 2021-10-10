@@ -1,8 +1,22 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { ProductoForm } from "./forms/products/products.form";
+import { VendedorHomeComponent } from "./home/home.component";
+import { VendedorLayoutComponent } from "./layout/layout.component";
+import { ProductsComponent } from "./products/products.component";
 
 const ROUTES : Routes = [
-
+    {
+        path: '',
+        component: VendedorLayoutComponent,
+        children: [
+            { path: '', redirectTo: '/home', pathMatch: 'full' },
+            { path: 'home', component: VendedorHomeComponent },
+            { path: 'products', component: ProductsComponent }
+        ]
+    },
+    { path: 'products/form', component: ProductoForm },
+    { path: 'products/form/:id', component: ProductoForm }
 ];
 
 @NgModule({

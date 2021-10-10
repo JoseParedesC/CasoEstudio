@@ -30,7 +30,7 @@ public class AuthService {
 	public Map<String, Object> saveUser(UsuarioDTO usuario) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			if(usuario.getRol().equalsIgnoreCase(Constantes.CLIENTE.toString())) {
+			if(usuario.getRol().equalsIgnoreCase(Constantes.CLIENTE.getValue())) {
 				if(clienteRepository.existsByNroDocumentoOrCorreo(usuario.getNroDocumento(), usuario.getEmail())) {
 					map.put("valid", false);
 					map.put("message", "El número de documento y/o email ya esta en uso. Intente con otro");
@@ -39,7 +39,7 @@ public class AuthService {
 				CarroCompra carroCompra = carroCompraRepository.save(new CarroCompra(0L, 0.0, null, null, new Date()));
 				Cliente cliente = new Cliente(usuario.getId(), usuario.getEmail(), usuario.getNombre(), usuario.getApellido(), 
 						usuario.getTipoDocumento(), usuario.getNroDocumento(), usuario.getTelefono(), usuario.getPassword(), 
-						Constantes.CLIENTE.toString(), Constantes.HABILITADO.toString(), carroCompra);
+						Constantes.CLIENTE.toString(), Constantes.HABILITADO.getValue(), carroCompra);
 				clienteRepository.save(cliente);
 				map.put("valid", true);
 				map.put("message", cliente);
@@ -52,7 +52,7 @@ public class AuthService {
 				}
 				Vendedor vendedor = new Vendedor(usuario.getId(), usuario.getEmail(), usuario.getDireccion(), usuario.getNombre(), 
 						usuario.getApellido(), usuario.getTipoDocumento(), usuario.getNroDocumento(), usuario.getTelefono(), "",
-						usuario.getPassword(), Constantes.VENDEDOR.toString(), Constantes.HABILITADO.toString(), null, new Date());
+						usuario.getPassword(), Constantes.VENDEDOR.getValue(), Constantes.HABILITADO.getValue(), null, new Date());
 				vendedorRepository.save(vendedor);
 				map.put("valid", true);
 				map.put("message", vendedor);
@@ -68,7 +68,7 @@ public class AuthService {
 	public Map<String, Object> identifyUser(UsuarioDTO usuario) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			if(usuario.getRol().equalsIgnoreCase(Constantes.CLIENTE.toString())) {
+			if(usuario.getRol().equalsIgnoreCase(Constantes.CLIENTE.getValue())) {
 				Cliente cliente = clienteRepository.findByCorreo(usuario.getEmail());
 				if(cliente == null) {
 					map.put("valid", false);
@@ -85,8 +85,22 @@ public class AuthService {
 						return map;
 					}
 				}
-			}else if(usuario.getRol().equalsIgnoreCase(Constantes.VENDEDOR.toString())) {
-				
+			}else if(usuario.getRol().equalsIgnoreCase(Constantes.VENDEDOR.getValue())) {
+				Vendedor vendedor = vendedorRepository.findByCorreo(usuario.getEmail());
+				if(vendedor == null) {
+					map.put("valid", false);
+					map.put("message", "El usuario no existe");
+					return map;
+				}else {
+					if(vendedor.getPassword().equals(usuario.getPassword())) {
+						map.put("valid", true);
+						map.put("message", vendedor);
+					}else {
+						map.put("valid", false);
+						map.put("message", "Contraseña incorrecta. Intente nuevamente");
+						return map;
+					}
+				}
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

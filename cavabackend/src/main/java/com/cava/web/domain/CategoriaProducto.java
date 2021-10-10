@@ -1,15 +1,18 @@
 package com.cava.web.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table( name = "categoria_producto")
@@ -18,8 +21,9 @@ public class CategoriaProducto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long id;
 	private String nombre;
-	@OneToOne( mappedBy = "categoria" )
-	private Producto producto;
+	@OneToMany( mappedBy = "categoria" )
+	@JsonBackReference
+	private List<Producto> producto;
 	@Temporal( TemporalType.DATE )
 	private Date created;
 	
@@ -30,7 +34,6 @@ public class CategoriaProducto {
 		this.id = id;
 		this.nombre = nombre;
 		this.created = created;
-		this.producto = null;
 	}
 	public Long getId() {
 		return id;
@@ -43,12 +46,6 @@ public class CategoriaProducto {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-	public Producto getProducto() {
-		return producto;
-	}
-	public void setProducto(Producto producto) {
-		this.producto = producto;
 	}
 	public Date getCreated() {
 		return created;

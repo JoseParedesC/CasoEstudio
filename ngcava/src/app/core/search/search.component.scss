@@ -21,6 +21,9 @@
 
         button {
             border-radius: 10px;
+            padding: 0.4rem 1.5rem;
+            color: $white;
+            border: 1px solid $black;            
         }
     }
 }
@@ -44,9 +47,36 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;
+
+    .card{
+        height: 23rem;
+        border-radius: 1.5rem;
+        padding: 0 1rem;
+        cursor: pointer;
+        width: 15rem;
+
+        .img-container{
+            margin-top: -4rem;
+            text-align: center;
+            img{
+                filter: brightness(1.1);
+                mix-blend-mode: multiply;
+            }
+        }
+
+        h5{
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        h6{
+            font-size: 600;
+            font-size: 1rem;
+        }
+    }
 }
 
-.btn:hover{
+button:hover{
     background: $orange !important;
     border-color: $orange !important;
 }

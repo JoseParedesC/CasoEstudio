@@ -6,5 +6,14 @@ public enum Constantes {
 	ADMIN("Administrador"),
 	HABILITADO("Habilitado"),
 	DESHABILITADO("Deshabilitado");
-	Constantes(String string) {}
+
+	private String value;
+	
+	Constantes(String value) {
+		this.value = value;
+	}
+
+	public String getValue() {
+		return this.value;
+	}
 }

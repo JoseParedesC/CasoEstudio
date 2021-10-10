@@ -13,11 +13,11 @@ export class HeaderComponent implements OnInit{
     }
 
     logOut(){
-        this._user.deleteUser('cliente');
+        this._user.deleteUser();
         this.getUser();
     }
 
     getUser(){
-        this.name = !this._user.getUser('cliente') ? '' : this._user.getUser('cliente').nombre;
+        this.name = !this._user.getUser() ? '' : this._user.getUser().nombre;
     }
 }

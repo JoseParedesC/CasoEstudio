@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit{
     }
 
     getUser(){
-        this.user = this._user.getUser('cliente');
+        this.user = this._user.getUser();
     }
 
     uploadImg(event : any){

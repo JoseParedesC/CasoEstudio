@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table( name = "vendedores")
 public class Vendedor{
@@ -32,6 +34,7 @@ public class Vendedor{
 	private String rol;
 	private String estado;
 	@OneToMany( mappedBy = "vendedor", fetch = FetchType.LAZY )
+	@JsonBackReference
 	private List<Producto> productos;
 	private Date created;
 	

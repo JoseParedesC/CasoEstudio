@@ -13,7 +13,7 @@ const ROUTES : Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', pathMatch: 'full', component: HomeComponent },
+            { path: '', redirectTo: '/home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'search', component: SearchComponent },
             { path: 'profile', component: ProfileComponent }
@@ -33,7 +33,7 @@ const ROUTES : Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(ROUTES)],
+    imports: [RouterModule.forRoot(ROUTES, { useHash: true })],
     exports: [RouterModule]
 })
 export class AppRoutingModule{}

@@ -36,7 +36,7 @@ export class SignInComponent{
     signIn(){
         this._auth.signInUser(this.signInForm.value)
             .subscribe((response : any) => {
-                this._user.setUser('cliente', response.body.message)
+                this._user.setUser(response.body.message)
                 this._alert.success('Su registro ha sido exitoso');
                 this.router.navigateByUrl('/home');
             }, badRequest => {
