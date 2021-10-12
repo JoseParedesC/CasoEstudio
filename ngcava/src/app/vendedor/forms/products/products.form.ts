@@ -10,7 +10,8 @@ import { ProductService } from "src/app/shared/services/producto.service";
 
 @Component({
     selector: 'vendedor-form-product',
-    templateUrl: './products.form.html'
+    templateUrl: './products.form.html',
+    styleUrls: ['./products.form.scss']
 })
 export class ProductoForm implements OnInit{
     id: number;

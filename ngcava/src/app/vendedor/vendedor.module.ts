@@ -6,12 +6,14 @@ import { VendedorHomeComponent } from "./home/home.component";
 import { VendedorLayoutComponent } from "./layout/layout.component";
 import { ProductsComponent } from "./products/products.component";
 import { VendedorRoutingModule } from "./vendedor-routing.module";
+import { VentasVendedorComponent } from "./ventas/ventas.component";
 
 @NgModule({
     declarations: [
         VendedorLayoutComponent,
         VendedorHomeComponent,
         ProductsComponent,
+        VentasVendedorComponent,
         ProductoForm
     ],
     imports: [

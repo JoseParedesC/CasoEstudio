@@ -4,6 +4,7 @@ import { ProductoForm } from "./forms/products/products.form";
 import { VendedorHomeComponent } from "./home/home.component";
 import { VendedorLayoutComponent } from "./layout/layout.component";
 import { ProductsComponent } from "./products/products.component";
+import { VentasVendedorComponent } from "./ventas/ventas.component";
 
 const ROUTES : Routes = [
     {
@@ -12,7 +13,8 @@ const ROUTES : Routes = [
         children: [
             { path: '', redirectTo: '/home', pathMatch: 'full' },
             { path: 'home', component: VendedorHomeComponent },
-            { path: 'products', component: ProductsComponent }
+            { path: 'products', component: ProductsComponent },
+            { path: 'ventas', component: VentasVendedorComponent }
         ]
     },
     { path: 'products/form', component: ProductoForm },
