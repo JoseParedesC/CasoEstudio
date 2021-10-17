@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DetailComponent } from './core/detail/detail.component';
 import { HomeComponent } from './core/home/home.component';
 import { LayoutComponent } from './core/layout/layout.component';
 import { LoginComponent } from './core/login/login.component';
@@ -16,10 +17,11 @@ const ROUTES : Routes = [
             { path: '', redirectTo: '/home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'search', component: SearchComponent },
-            { path: 'profile', component: ProfileComponent }
+            { path: 'profile', component: ProfileComponent },
+            { path: 'detail/:id', component: DetailComponent }
         ]
     },
-    { path: 'login/:persona', component: LoginComponent },
+    { path: 'login', component: LoginComponent },
     { path: 'sign-in', component: SignInComponent },
     { 
         path: 'vendedor',

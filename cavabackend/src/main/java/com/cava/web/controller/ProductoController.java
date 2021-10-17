@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cava.web.dto.ProductoDTO;
@@ -46,6 +47,11 @@ public class ProductoController {
 	@GetMapping("/vendedor/{id}")
 	public ResponseEntity<TableDTO> getAllByVendedor(@PathVariable Long id){
 		return new ResponseEntity<TableDTO>(productoService.findAllByIdVendedor(id), HttpStatus.OK);
+	}
+	
+	@GetMapping("/search")
+	public ResponseEntity<List<ProductoDTO>> searchProducts(@RequestParam(required = false) String nombre, @RequestParam (required = false)Long categoria){
+		return new ResponseEntity<>(productoService.searchProducts(nombre, categoria), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")

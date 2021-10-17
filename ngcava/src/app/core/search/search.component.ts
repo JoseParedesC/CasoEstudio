@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Productos } from "src/app/shared/models/Productos";
 import { ProductService } from "src/app/shared/services/producto.service";
 import { Categoria } from "../models/categoria";
+import { AlertService } from "../services/alert.service";
 import { CategoriaService } from "../services/categoria.service";
 
 @Component({
@@ -12,9 +13,12 @@ import { CategoriaService } from "../services/categoria.service";
 export class SearchComponent implements OnInit{
     categorias: Categoria[] = [];
     productos: Productos[] = [];
+    nombreProducto : string = "";
+    idCategoria: number = 0;
     constructor(
         private _categoria: CategoriaService,
-        private _producto : ProductService
+        private _producto : ProductService,
+        private _alert : AlertService
     ){}
 
     ngOnInit(){
@@ -27,14 +31,19 @@ export class SearchComponent implements OnInit{
             .subscribe((response) => {
                 this.categorias = response.body;
             }, badRequest => {
-                console.log(badRequest);
+                this._alert.error(badRequest.error);
             });
     }
 
     getProducts(){
-        this._producto.getProductos()
-            .subscribe(response => {
-                this.productos = response;
-            })
+        this.idCategoria = this.nombreProducto !== '' ? 0 : this.idCategoria;
+        this._producto.searchProducts(this.nombreProducto, this.idCategoria)
+            .subscribe(response => this.productos = response);
+    }
+
+    setCategoria(idCategoria : number){
+        this.nombreProducto = "";
+        this.idCategoria = idCategoria;
+        this.getProducts();
     }
 }

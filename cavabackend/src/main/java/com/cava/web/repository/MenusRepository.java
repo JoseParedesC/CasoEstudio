@@ -7,11 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.cava.web.domain.Menu;
 
 
-public interface MenusRepository extends JpaRepository<Menu, Long>{
-
-	
-	List<Menu> findByTipoRol(String tipoRol);
-	
-	
-	
+public interface MenusRepository extends JpaRepository<Menu, Long>{	
+	List<Menu> findByTipoRolIgnoreCase(String tipoRol);
 }

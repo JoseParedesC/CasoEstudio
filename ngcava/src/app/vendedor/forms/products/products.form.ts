@@ -7,6 +7,7 @@ import { CategoriaService } from "src/app/core/services/categoria.service";
 import { UserService } from "src/app/core/services/user.service";
 import { Productos } from "src/app/shared/models/Productos";
 import { ProductService } from "src/app/shared/services/producto.service";
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
     selector: 'vendedor-form-product',
@@ -24,7 +25,8 @@ export class ProductoForm implements OnInit{
         private _user : UserService,
         private _alert: AlertService,
         private router: Router,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private pipe : CurrencyPipe
     ){
         this.productForm = this.formBuilder.group({
             id: [0, Validators.required],
@@ -44,6 +46,7 @@ export class ProductoForm implements OnInit{
     ngOnInit(){
         this.getCategorias();
         this.getProduct();
+        this.setPipeForm();
     }
 
     //Start Selects
@@ -58,6 +61,7 @@ export class ProductoForm implements OnInit{
         producto.vendedor = {id : this._user.getUser().id};
         producto.categoria = {id : this.productForm.get('categoria').value }
         producto.foto = document.getElementById('image').getAttribute('src');
+        producto.precio = this.productForm.get('precio').value.replace(/[,]/g, '');
         this._producto.saveProducto(producto).
             subscribe(() => {
                 this._alert.success('Se ha guardado el producto');
@@ -100,5 +104,19 @@ export class ProductoForm implements OnInit{
             image.setAttribute('src', reader.result.toString());
             image.style.display = 'block';
         }
+    }
+
+    setPipeForm(){
+        this.productForm.get('precio').valueChanges
+            .subscribe((data) => {
+                this.productForm.patchValue({
+                    precio : this.pipe.transform(
+                        data.toString().replace(/\D/g, '').replace(/^0+/, ''),
+                        '',
+                        '',
+                        '1.0-0'
+                    )
+                }, { emitEvent: false })
+            })
     }
 }

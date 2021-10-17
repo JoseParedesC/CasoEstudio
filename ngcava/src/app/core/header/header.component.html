@@ -7,13 +7,24 @@
         <i class='bx bx-home pointer icons' routerLink="/home" routerLinkActive="active_router"></i>
         <i class='bx bx-search-alt pointer icons' routerLink="/search" routerLinkActive="active_router"></i>
         <i class='bx bx-shopping-bag pointer icons'></i>
-        <i *ngIf="name === ''" class='bx bx-user pointer icons' routerLink="/login/cliente"></i>
-        <div *ngIf="name !== ''">
-            <i class='bx bx-log-out pointer icons' [matMenuTriggerFor]="menu"></i>
+        <i class='bx bx-user pointer icons' [matMenuTriggerFor]="menu"></i>
             <mat-menu #menu="matMenu">
-                <button routerLink="/profile" mat-menu-item>Mi perfil</button>
-                <button routerLink="/login/cliente" mat-menu-item (click)="logOut()">Salir</button>
-            </mat-menu>
-        </div>
+                <div *ngIf="!isVisible">
+                    <button routerLink="/login" mat-menu-item>
+                        <i class='bx bx-log-in icons pointer'></i>
+                        Iniciar sesión
+                    </button>
+                </div>
+                <div *ngIf="isVisible">
+                    <button routerLink="/profile" mat-menu-item>
+                        <i class='bx bxs-user-account icons'></i>
+                        Mi perfil
+                    </button>
+                    <button routerLink="/login/cliente" mat-menu-item (click)="logOut()">
+                        <i class='bx bx-log-out pointer icons'></i>
+                        Salir
+                    </button>
+                </div>
+            </mat-menu>        
     </div>
 </nav>

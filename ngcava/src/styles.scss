@@ -42,6 +42,11 @@
     min-height: 200px;
 }
 
+.card:hover{
+    transition: box-shadow .1s ease-out;
+    box-shadow: 0 7px 16px 0 rgb(0 0 0 / 20%), 0 1px 3px 0 rgb(0 0 0 / 10%);
+}
+
 .bg-orange {
     background: $orange;
 }
@@ -50,49 +55,89 @@
     width: 100%;
 }
 
-button{
+button {
     outline: none !important;
 }
 
-.orange{
+.orange {
     color: $orange;
 }
 
-.bg-dark{
+.bg-dark {
     background: $black !important;
 }
 
-.card-header{
+.card-header {
     background: $orange !important;
 }
 
-.text-orange{
-    color: $orange;
+.text-orange {
+    color: $orange !important;
 }
 
-.active{
-    a{
+.active {
+    a {
         background: $orange !important;
     }
 }
 
-.container-search{
+.container-search {
     margin: 0.4rem 0;
     border-bottom: 1px solid $gray !important;
     width: 60%;
-    .bx{
+    .bx {
         font-size: 1.1rem;
         margin-right: 0.4rem;
     }
-    input{
+    input {
         border: 0;
         width: 80%;
         font-size: 1.1rem;
     }
 }
 
+.no-bg {
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
+}
+
+.product-grid {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+
+    .card{
+        height: 23rem;
+        border-radius: 1.5rem;
+        padding: 0 1rem;
+        width: 14rem;
+
+        .img-container{
+            margin-top: -4rem;
+            text-align: center;
+            cursor: pointer;
+
+            img{
+                height: 18rem;
+                width: auto;
+            }
+        }
+
+        h5{
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        h6{
+            font-size: 600;
+            font-size: 1rem;
+        }
+    }
+}
+
 //Router
-.active_router{
+.active_router {
     color: $orange;
 }
 //End Router
@@ -106,6 +151,10 @@ button{
 .text {
     font-family: $slate !important;
 }
+
+.text-b{
+    font-family: $balermo !important;
+}
 //End Text
 
 //Alerts
@@ -117,7 +166,7 @@ button{
     left: 0;
     margin: 0 auto;
 
-    .toast-header{
+    .toast-header {
         color: $black;
     }
 

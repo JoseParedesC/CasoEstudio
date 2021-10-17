@@ -53,4 +53,20 @@ public class CarroCompra {
 	public void setCreated(Date created) {
 		this.created = created;
 	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public List<CarroCompraItem> getCarroCompraItem() {
+		return carroCompraItem;
+	}
+
+	public void setCarroCompraItem(List<CarroCompraItem> carroCompraItem) {
+		this.carroCompraItem = carroCompraItem;
+	}
 }

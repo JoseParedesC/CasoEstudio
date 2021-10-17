@@ -2,32 +2,29 @@
     <div class="container">
         <div class="container-button">
             <div class="container-items">
-                <input type="text" placeholder="Busca una cerveza...">
-                <button class="bg-dark">Buscar</button>
+                <input type="text" placeholder="Busca una cerveza..."
+                (keyup.enter)="getProducts()"
+                [(ngModel)]="nombreProducto">
+                <button class="bg-dark" (click)="getProducts()">Buscar</button>
             </div>
         </div>
-    </div>    
+    </div>
     <div class="row" style="margin: 0; margin-top: 2rem;">
         <div class="col-lg-2">
             <div class="container-categories">
                 <h5 class="title">Categorias</h5>
                 <ul class="container-list">
                     <li *ngFor="let categoria of categorias"
-                        class="text text-dark h4 pointer item-list">{{ categoria.nombre }}</li>
+                        [ngClass]="{ 'text-orange' : categoria.id === idCategoria }"
+                        (click)="setCategoria(categoria.id)"
+                        class="text text-dark h4 pointer item-list">
+                        {{ categoria.nombre }}
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="col-lg-10">
-            <div class="product-grid">
-                <div *ngFor="let producto of productos" class="card shadow-sm">
-                    <div class="img-container">
-                        <img [src]="producto.foto">
-                    </div>
-                    <h5 class="text">{{ producto.nombre }}</h5>
-                    <h6 class="text">{{ producto.vendedor.nombre }}</h6>
-                    <h5 class="text">{{ producto.precio | currency }}</h5>
-                </div>
-            </div>
+            <app-grid-product [productos]="productos"></app-grid-product>
         </div>
     </div>
 </div>

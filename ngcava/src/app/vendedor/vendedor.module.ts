@@ -1,3 +1,4 @@
+import { CurrencyPipe } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { MaterialModule } from "../material/material.module";
 import { SharedModule } from "../shared/shared.module";
@@ -21,6 +22,8 @@ import { VentasVendedorComponent } from "./ventas/ventas.component";
         SharedModule,
         VendedorRoutingModule
     ],
-    providers: []
+    providers: [
+        CurrencyPipe
+    ]
 })
 export class VendedorModule{}

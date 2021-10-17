@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table( name = "carro_compra_items" )
 public class CarroCompraItem {
@@ -19,6 +21,7 @@ public class CarroCompraItem {
 	private Long id;
 	@ManyToOne
 	@JoinColumn( name = "id_carro_compra", foreignKey = @ForeignKey( name = "FK_ID_CARRO_COMPRA" ) )
+	@JsonBackReference
 	private CarroCompra carroCompra;
 	@ManyToOne
 	@JoinColumn( name = "id_producto", foreignKey = @ForeignKey( name = "FK_ID_PRODUCTO" ) )
@@ -42,5 +45,11 @@ public class CarroCompraItem {
 	}
 	public void setCreated(Date created) {
 		this.created = created;
+	}
+	public Producto getProducto() {
+		return producto;
+	}
+	public void setProducto(Producto producto) {
+		this.producto = producto;
 	}
 }

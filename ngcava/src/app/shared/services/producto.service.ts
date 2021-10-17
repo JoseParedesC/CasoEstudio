@@ -19,6 +19,13 @@ export class ProductService{
         return this.http.get<Productos[]>(this.url);
     }
 
+    searchProducts(nombre : string, idCategoria : number){
+        if(idCategoria !== 0){
+            return this.http.get<Productos[]>(`${this.url}/search?categoria=${idCategoria}`);
+        }
+        return this.http.get<Productos[]>(`${this.url}/search?nombre=${nombre}`);
+    }
+
     getProductosByIdvendedor(idVendedor : string){
         return this.http.get<Table>(`${this.url}/vendedor/${idVendedor}`);
     }
