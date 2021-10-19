@@ -4,7 +4,7 @@
             <img class="no-bg" [src]="producto.foto">
         </div>
         <h5 class="text">{{ producto.nombre }}</h5>
-        <h6 class="text">{{ producto.vendedor.nombre }}</h6>
+        <h6 class="text">{{ producto.vendedor }}</h6>
         <div class="d-flex justify-content-between align-items-center">
             <h5 class="text">{{ producto.precio | currency }}</h5>
             <i (click)="addProductToCart(producto)" class='bx bx-cart text-orange pointer h4'></i>

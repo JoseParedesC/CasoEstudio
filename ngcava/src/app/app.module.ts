@@ -9,7 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Componentes
 import { AppComponent } from './app.component';
 import { AlertComponent } from './shared/alert/alert.component';
-import { AuthInterceptorService } from './core/services/auth.interceptor';
+import { AuthInterceptorService } from './auth/service/auth.interceptor';
+import { AuthModule } from './auth/auth.module';
+import { ClientModule } from './client/client.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { AuthInterceptorService } from './core/services/auth.interceptor';
   imports: [
     BrowserModule,
     CoreModule,
+    AuthModule,
+    ClientModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,

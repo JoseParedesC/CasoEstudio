@@ -2,6 +2,7 @@ package com.cava.web.controller;
 
 import java.util.List;
 
+import com.cava.web.dto.ProductGridDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,7 +51,7 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/search")
-	public ResponseEntity<List<ProductoDTO>> searchProducts(@RequestParam(required = false) String nombre, @RequestParam (required = false)Long categoria){
+	public ResponseEntity<List<ProductGridDTO>> searchProducts(@RequestParam(required = false) String nombre, @RequestParam (required = false)Long categoria){
 		return new ResponseEntity<>(productoService.searchProducts(nombre, categoria), HttpStatus.OK);
 	}
 	

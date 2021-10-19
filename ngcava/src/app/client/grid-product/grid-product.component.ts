@@ -1,16 +1,17 @@
 import { Component, Input } from "@angular/core";
+import { ProductoGrid } from "src/app/shared/models/ProductoGrid";
 import { Productos } from "src/app/shared/models/Productos";
 import { Carro } from "../models/carro";
-import { AlertService } from "../services/alert.service";
-import { CartService } from "../services/cart.service";
-import { UserService } from "../services/user.service";
+import { AlertService } from "../../core/services/alert.service";
+import { CartService } from "../service/cart.service";
+import { UserService } from "../../core/services/user.service";
 
 @Component({
     selector: 'app-grid-product',
     templateUrl: './grid-product.component.html'
 })
 export class GridProductComponent{
-    @Input() productos : Productos[] = [];
+    @Input() productos : ProductoGrid[] = [];
     cart : Carro = { producto: null, carroCompra: '' };
     constructor(
         private _cart : CartService,
@@ -18,9 +19,8 @@ export class GridProductComponent{
         private _alert: AlertService
     ){}
 
-    addProductToCart(producto : Productos){
+    addProductToCart(producto : ProductoGrid){
         if(this.isClient()){
-            this.cart.producto = producto;
             this.cart.carroCompra = { id : this._user.getUser().carroCompra['id'] };
             this._cart.saveItem(this.cart)
                 .subscribe(() => {

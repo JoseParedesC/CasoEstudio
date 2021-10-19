@@ -6,7 +6,7 @@
     <div class="controls">
         <i class='bx bx-home pointer icons' routerLink="/home" routerLinkActive="active_router"></i>
         <i class='bx bx-search-alt pointer icons' routerLink="/search" routerLinkActive="active_router"></i>
-        <i class='bx bx-shopping-bag pointer icons'></i>
+        <i class='bx bx-shopping-bag pointer icons' routerLink="/cart" routerLinkActive="active_router"></i>
         <i class='bx bx-user pointer icons' [matMenuTriggerFor]="menu"></i>
             <mat-menu #menu="matMenu">
                 <div *ngIf="!isVisible">

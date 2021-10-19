@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Productos } from "src/app/shared/models/Productos";
+import { ProductoGrid } from "src/app/shared/models/ProductoGrid";
 import { ProductService } from "src/app/shared/services/producto.service";
-import { Categoria } from "../models/categoria";
-import { AlertService } from "../services/alert.service";
-import { CategoriaService } from "../services/categoria.service";
+import { Categoria } from "../../core/models/categoria";
+import { AlertService } from "../../core/services/alert.service";
+import { CategoriaService } from "../../core/services/categoria.service";
 
 @Component({
     selector: 'app-search',
@@ -12,7 +12,7 @@ import { CategoriaService } from "../services/categoria.service";
 })
 export class SearchComponent implements OnInit{
     categorias: Categoria[] = [];
-    productos: Productos[] = [];
+    productos: ProductoGrid[] = [];
     nombreProducto : string = "";
     idCategoria: number = 0;
     constructor(
@@ -31,14 +31,18 @@ export class SearchComponent implements OnInit{
             .subscribe((response) => {
                 this.categorias = response.body;
             }, badRequest => {
-                this._alert.error(badRequest.error);
+                this._alert.error(badRequest);
             });
     }
 
     getProducts(){
         this.idCategoria = this.nombreProducto !== '' ? 0 : this.idCategoria;
         this._producto.searchProducts(this.nombreProducto, this.idCategoria)
-            .subscribe(response => this.productos = response);
+            .subscribe(response => {
+                this.productos = response
+            }, badRequest => {
+                this._alert.error(badRequest);
+            });
     }
 
     setCategoria(idCategoria : number){
