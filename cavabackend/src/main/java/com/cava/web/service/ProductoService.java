@@ -5,11 +5,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import com.cava.web.dto.ProductGridDTO;
+import com.cava.web.dto.ProductoTableDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
+import com.cava.web.domain.CategoriaProducto;
 import com.cava.web.domain.Producto;
 import com.cava.web.domain.Vendedor;
 import com.cava.web.dto.ProductoDTO;
@@ -54,7 +57,7 @@ public class ProductoService {
 	public List<ProductoDTO> findAll(){
 		List<ProductoDTO> productos = new ArrayList<ProductoDTO>();
 		try {
-			List<Producto> productsDb = productoRepository.findAll();
+			Iterable<Producto> productsDb = productoRepository.findAll();
 			for(Producto producto : productsDb) {
 				productos.add(productoMapper.toProductoDTO(producto));
 			}
@@ -69,12 +72,40 @@ public class ProductoService {
 		try {
 			Vendedor vendedor = new Vendedor();
 			vendedor.setId(id);
-			Page<?> page = new PageImpl<>(productoRepository.findAllByVendedor(vendedor));
+			List<ProductoTableDTO> productos = new ArrayList<>();
+			for (Producto producto : productoRepository.findAllByVendedor(vendedor)){
+				productos.add(productoMapper.toProductoTableDTO(producto));
+			}
+			Page<?> page = new PageImpl<>(productos);
 			table = new TableDTO(page.getTotalPages(), page.getTotalElements(), page.getContent());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return table;
+	}
+	
+	public List<ProductGridDTO> searchProducts(String nombre, Long idCategoria){
+		List<ProductGridDTO> productos = new ArrayList<ProductGridDTO>();
+		try {
+			if(nombre != null) {
+				for(Producto producto : productoRepository.findByNombreContainingIgnoreCase(nombre)) {
+					productos.add(productoMapper.toProductoGridDTO(producto));
+				}
+			}else if(idCategoria != null){
+				CategoriaProducto categoria = new CategoriaProducto();
+				categoria.setId(idCategoria);
+				for(Producto producto : productoRepository.findByCategoria(categoria)) {
+					productos.add(productoMapper.toProductoGridDTO(producto));
+				}
+			}else {
+				for(Producto producto : productoRepository.findAll()) {
+					productos.add(productoMapper.toProductoGridDTO(producto));
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return productos;
 	}
 	
 	public boolean deleteById(Long id){

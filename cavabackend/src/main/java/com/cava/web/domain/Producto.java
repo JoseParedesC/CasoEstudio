@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table( name = "productos" )
 public class Producto {
@@ -40,6 +42,7 @@ public class Producto {
 	//@JsonManagedReference
 	private Vendedor vendedor;
 	@OneToMany( mappedBy = "producto", fetch = FetchType.LAZY )
+	@JsonBackReference
 	private List<CarroCompraItem> carroCompraItem;
 	private String descripcion;
 	

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -20,7 +21,6 @@ public class Vendedor{
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private Long id;
-	private String correo;
 	private String direccion;
 	private String nombre;
 	private String apellido;
@@ -30,22 +30,20 @@ public class Vendedor{
 	private String nroDocumento;
 	private String telefono;
 	private String foto;
-	private String password;
-	private String rol;
-	private String estado;
 	@OneToMany( mappedBy = "vendedor", fetch = FetchType.LAZY )
 	@JsonBackReference
 	private List<Producto> productos;
 	private Date created;
+	@OneToOne
+	private Usuario usuario;
 	
 	public Vendedor() {}
 
-	public Vendedor(Long id, String correo, String direccion, String nombre, String apellido, String tipoDocumento,
-			String nroDocumento, String telefono, String foto, String password, String rol, String estado,
-			List<Producto> productos, Date created) {
+	public Vendedor(Long id, String direccion, String nombre, String apellido, String tipoDocumento,
+			String nroDocumento, String telefono, String foto, List<Producto> productos, Date created,
+			Usuario usuario) {
 		super();
 		this.id = id;
-		this.correo = correo;
 		this.direccion = direccion;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -53,11 +51,9 @@ public class Vendedor{
 		this.nroDocumento = nroDocumento;
 		this.telefono = telefono;
 		this.foto = foto;
-		this.password = password;
-		this.rol = rol;
-		this.estado = estado;
 		this.productos = productos;
 		this.created = created;
+		this.usuario = usuario;
 	}
 
 	public Long getId() {
@@ -66,14 +62,6 @@ public class Vendedor{
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getCorreo() {
-		return correo;
-	}
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
 	}
 
 	public String getDireccion() {
@@ -132,30 +120,6 @@ public class Vendedor{
 		this.foto = foto;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getRol() {
-		return rol;
-	}
-
-	public void setRol(String rol) {
-		this.rol = rol;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
 	public List<Producto> getProductos() {
 		return productos;
 	}
@@ -170,5 +134,13 @@ public class Vendedor{
 
 	public void setCreated(Date created) {
 		this.created = created;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 }

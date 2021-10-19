@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
+import { Subject } from "rxjs";
 import { Menus } from "../models/menu";
 import { MenuService } from "../services/menu.service";
 

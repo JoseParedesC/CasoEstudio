@@ -1,0 +1,27 @@
+@import '../../../assets/_scss/variables';
+.container{
+    margin-top: 6rem;
+}
+.container-img{
+    height: auto;
+    width: 20rem;
+
+    img{
+        height: 30rem;
+    }
+}
+
+.container-info{
+    padding: 0 5rem;
+    width: 35rem;
+}
+
+.container-cant{
+    div{
+        background: $white;
+        height: 2.6rem;
+        width: 5rem;
+        border: 1px solid $white;
+        border-radius: 0.3rem;
+    }
+}

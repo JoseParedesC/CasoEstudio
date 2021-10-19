@@ -2,9 +2,9 @@ import { Component, OnInit} from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Auth } from '../models/auth';
-import { AlertService } from '../services/alert.service';
-import { AuthService } from '../services/auth.service';
-import { UserService } from '../services/user.service';
+import { AlertService } from '../../core/services/alert.service';
+import { AuthService } from '../service/auth.service';
+import { UserService } from '../../core/services/user.service';
 
 @Component({
     selector: 'app-login',
@@ -23,19 +23,18 @@ export class LoginComponent{
     ){
         this.loginForm = this.formBuilder.group({
             email: ['', Validators.required],
-            password: ['', Validators.required],
-            rol: ['']
+            password: ['', Validators.required]
         })
     }
 
     login(){
-        const tipoPersona = this.route.snapshot.params.persona;
-        this.loginForm.get('rol').setValue(tipoPersona);
         this._auth.loginUser(this.loginForm.value)
-            .subscribe((response) => {
+            .subscribe((response : any) => {
+                const tipoPersona = response.body.usuario['rol'];
                 this._user.setUser(response.body);
-                if(tipoPersona === 'cliente' || 'administrador'){
-                    this.router.navigateByUrl(`${tipoPersona}/home`);
+                if(tipoPersona.toUpperCase() == 'vendedor'.toUpperCase() ||
+                    tipoPersona.toUpperCase() == 'administrador'.toUpperCase()){
+                    this.router.navigateByUrl(`${tipoPersona.toLowerCase()}/home`);
                 }else{
                     this.router.navigateByUrl('/home');
                 }

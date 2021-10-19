@@ -19,7 +19,7 @@ public class MenusService {
 	public List<MenusDTO> findByRol(String rol) {
 		List<MenusDTO> list = new ArrayList<MenusDTO>();
 		try {
-			for(Menu menu : menusRepository.findByTipoRol(rol)) {
+			for(Menu menu : menusRepository.findByTipoRolIgnoreCase(rol)) {
 				list.add(new MenusDTO(menu.getId(), menu.getNombre(), menu.getPath(), menu.getTipoRol(), menu.getCreated(), menu.getIcons()));
 			}
 		}catch(Exception ex) {
@@ -27,7 +27,4 @@ public class MenusService {
 		}
 		return list;
 	}
-	
-	
 }
-

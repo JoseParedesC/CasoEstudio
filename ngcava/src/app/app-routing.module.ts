@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DetailComponent } from './client/detail/detail.component';
 import { HomeComponent } from './core/home/home.component';
 import { LayoutComponent } from './core/layout/layout.component';
-import { LoginComponent } from './core/login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
-import { ProfileComponent } from './core/profile/profile.component';
-import { SearchComponent } from './core/search/search.component';
-import { SignInComponent } from './core/sign-in/sign-in.component';
+import { ProfileComponent } from './client/profile/profile.component';
+import { SearchComponent } from './client/search/search.component';
+import { ShoppingCartComponent } from './client/shopping-cart/shopping-cart.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
 
 const ROUTES : Routes = [
     {
@@ -16,10 +18,12 @@ const ROUTES : Routes = [
             { path: '', redirectTo: '/home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'search', component: SearchComponent },
-            { path: 'profile', component: ProfileComponent }
+            { path: 'profile', component: ProfileComponent },
+            { path: 'detail/:id', component: DetailComponent },
+            { path: 'cart', component: ShoppingCartComponent }
         ]
     },
-    { path: 'login/:persona', component: LoginComponent },
+    { path: 'login', component: LoginComponent },
     { path: 'sign-in', component: SignInComponent },
     { 
         path: 'vendedor',

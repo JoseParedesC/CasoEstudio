@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="container-img">
+            <div class="card shadow-sm">
+                <img class="rounded no-bg" [src]="producto?.foto" width="100%" height="100%">
+            </div>
+        </div>
+        <div class="container-info">
+            <h4 class="text-b text-orange">{{ producto?.vendedor['nombre'] | uppercase }}</h4>
+            <h2 class="title">{{ producto?.nombre }}</h2>
+            <p class="text-b h4">
+                {{ producto?.descripcion }}
+            </p>
+            <h3 class="text-b">{{ producto?.precio | currency }}</h3>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="container-cant">
+                    <div class="shadow-sm d-flex justify-content-around align-items-center">
+                        <i (click)="minusCant()" class='bx bx-minus text-orange pointer'></i>
+                        <span class="text">{{ cantitad }}</span>
+                        <i (click)="plusCant()" class='bx bx-plus text-orange pointer'></i>
+                    </div>
+                </div>
+                <button class="bg-orange btn">
+                    <i class='bx bx-cart'></i>
+                    Añadir al carrito
+                </button>
+            </div>
+            <button routerLink="/search" class="btn btn-block bg-dark">Volver</button>
+        </div>
+    </div>
+</div>

@@ -10,13 +10,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table( name = "clientes" )
 public class Cliente{
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private Long id;
-	private String correo;
 	private String nombre;
 	private String apellido;
 	@Column( name = "tipo_documento" )
@@ -24,29 +25,26 @@ public class Cliente{
 	@Column( name = "nrodocumento" )
 	private String nroDocumento;
 	private String telefono;
-	private String password;
-	private String rol;
-	private String estado;
 	@OneToOne
 	@JoinColumn( name = "id_carro_compra", foreignKey = @ForeignKey( name = "FK_ID_CARRO_COMPRA" ))
+	@JsonBackReference
 	private CarroCompra carroCompra;
+	@OneToOne
+	private Usuario usuario;
 	
 	public Cliente() {}
 
-	public Cliente(Long id, String correo, String nombre, String apellido, String tipoDocumento, String nroDocumento,
-			String telefono, String password, String rol, String estado, CarroCompra carroCompra) {
+	public Cliente(Long id, String nombre, String apellido, String tipoDocumento, String nroDocumento, String telefono,
+			CarroCompra carroCompra, Usuario usuario) {
 		super();
 		this.id = id;
-		this.correo = correo;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.tipoDocumento = tipoDocumento;
 		this.nroDocumento = nroDocumento;
 		this.telefono = telefono;
-		this.password = password;
-		this.rol = rol;
-		this.estado = estado;
 		this.carroCompra = carroCompra;
+		this.usuario = usuario;
 	}
 
 	public Long getId() {
@@ -55,14 +53,6 @@ public class Cliente{
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getCorreo() {
-		return correo;
-	}
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
 	}
 
 	public String getNombre() {
@@ -105,35 +95,19 @@ public class Cliente{
 		this.telefono = telefono;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getRol() {
-		return rol;
-	}
-
-	public void setRol(String rol) {
-		this.rol = rol;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
 	public CarroCompra getCarroCompra() {
 		return carroCompra;
 	}
 
 	public void setCarroCompra(CarroCompra carroCompra) {
 		this.carroCompra = carroCompra;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 }

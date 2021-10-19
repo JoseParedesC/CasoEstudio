@@ -1,0 +1,18 @@
+<div class="product-grid" *ngIf="productos.length > 0; else elseBlock">
+    <div *ngFor="let producto of productos" class="card shadow-sm" >
+        <div class="img-container" [routerLink]="'/detail/' + producto.id">
+            <img class="no-bg" [src]="producto.foto">
+        </div>
+        <h5 class="text">{{ producto.nombre }}</h5>
+        <h6 class="text">{{ producto.vendedor }}</h6>
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="text">{{ producto.precio | currency }}</h5>
+            <i (click)="addProductToCart(producto)" class='bx bx-cart text-orange pointer h4'></i>
+        </div>
+    </div>
+</div>
+<ng-template #elseBlock>
+    <div class="text-center">
+        <h3 class="text-b">No se encontraron productos para tu <span class="text-orange">búsqueda.</span></h3>
+    </div>
+</ng-template>

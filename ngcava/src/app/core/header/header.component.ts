@@ -6,7 +6,7 @@ import { UserService } from "../services/user.service";
     templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit{
-    name: string = "";
+    isVisible: boolean = false; //Vendedor
     constructor(private _user: UserService){}
     ngOnInit(){
         this.getUser();    
@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit{
     }
 
     getUser(){
-        this.name = !this._user.getUser() ? '' : this._user.getUser().nombre;
+        if(this._user.getUser()){
+            this.isVisible = this._user.getUser().usuario['rol'].toUpperCase() === 'cliente'.toUpperCase() ? true : false;
+        }
     }
 }

@@ -27,10 +27,8 @@ public class MenusController {
 		return new ResponseEntity<>(menusService.save(categoriaDto) ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
 	}*/
 	
-	
 	@GetMapping("/{rol}")
 	public ResponseEntity<List<MenusDTO>> getByRol(@PathVariable String rol){
 		return new ResponseEntity<>(menusService.findByRol(rol), HttpStatus.OK);
 	}
-	
 }

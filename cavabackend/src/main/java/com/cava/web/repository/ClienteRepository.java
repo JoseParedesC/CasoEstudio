@@ -3,8 +3,8 @@ package com.cava.web.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cava.web.domain.Cliente;
+import com.cava.web.domain.Usuario;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
-	boolean existsByNroDocumentoOrCorreo(String nrodocumento, String correo);
-	Cliente findByCorreo(String correo);
+	Cliente findByUsuario(Usuario usuario);
 }
