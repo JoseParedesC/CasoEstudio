@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cava.web.dto.UsuarioDTO;
+import com.cava.web.dto.AuthDTO;
 import com.cava.web.service.AuthService;
 
 @RestController
@@ -22,7 +22,7 @@ public class AuthController {
 	private AuthService authService;
 	
 	@PostMapping
-	public ResponseEntity<?> saveUser(@RequestBody UsuarioDTO usuario){
+	public ResponseEntity<?> saveUser(@RequestBody AuthDTO usuario){
 		Map<String, Object> map = authService.saveUser(usuario);
 		if(Boolean.parseBoolean(map.get("valid").toString())) {
 			return new ResponseEntity<>(map, HttpStatus.OK);
@@ -32,7 +32,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<?> loginUser(@RequestBody UsuarioDTO usuario){
+	public ResponseEntity<?> loginUser(@RequestBody AuthDTO usuario){
 		Map<String, Object> map = authService.identifyUser(usuario);
 		return new ResponseEntity<>(map.get("message"), Boolean.parseBoolean(map.get("valid").toString()) ? 
 				HttpStatus.OK : HttpStatus.BAD_REQUEST);

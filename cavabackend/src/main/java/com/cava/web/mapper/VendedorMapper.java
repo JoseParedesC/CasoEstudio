@@ -4,9 +4,9 @@ import org.mapstruct.Mapper;
 
 import com.cava.web.domain.Usuario;
 import com.cava.web.domain.Vendedor;
-import com.cava.web.dto.UsuarioDTO;
+import com.cava.web.dto.AuthDTO;
 
 @Mapper
 public interface VendedorMapper {
-	Vendedor toVendedor(UsuarioDTO usuarioDTO, Usuario usuario);
+	Vendedor toVendedor(AuthDTO authDTO, Usuario usuario);
 }

@@ -1,5 +1,6 @@
 package com.cava.web.mapper;
 
+import com.cava.web.dto.ProductCartDTO;
 import com.cava.web.dto.ProductGridDTO;
 import com.cava.web.dto.ProductoTableDTO;
 import org.mapstruct.Mapper;
@@ -13,4 +14,5 @@ public interface ProductoMapper {
 	ProductoDTO toProductoDTO(Producto producto);
 	ProductGridDTO toProductoGridDTO(Producto producto);
 	ProductoTableDTO toProductoTableDTO(Producto producto);
+	ProductCartDTO toProductCartDTO(Producto producto);
 }

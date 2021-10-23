@@ -26,6 +26,7 @@ public class CarroCompraItem {
 	@ManyToOne
 	@JoinColumn( name = "id_producto", foreignKey = @ForeignKey( name = "FK_ID_PRODUCTO" ) )
 	private Producto producto;
+	private Integer cantidad;
 	private Date created;
 	
 	public Long getId() {
@@ -51,5 +52,11 @@ public class CarroCompraItem {
 	}
 	public void setProducto(Producto producto) {
 		this.producto = producto;
+	}
+	public Integer getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
 	}
 }

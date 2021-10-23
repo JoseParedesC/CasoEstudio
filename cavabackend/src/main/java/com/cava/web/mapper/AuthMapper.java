@@ -6,7 +6,7 @@ import com.cava.web.domain.Usuario;
 import com.cava.web.dto.AuthDTO;
 
 @Mapper
-public interface UsuarioMapper {
+public interface AuthMapper {
 	AuthDTO toUsuarioDTO(Usuario usuario);
 	Usuario toUsuario(AuthDTO authDTO);
 }

@@ -1,6 +1,6 @@
 package com.cava.web.dto;
 
-public class UsuarioDTO {
+public class AuthDTO {
 	private Long id;
 	private String direccion;
 	private String nombre;

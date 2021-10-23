@@ -5,9 +5,9 @@ import org.mapstruct.Mapper;
 import com.cava.web.domain.CarroCompra;
 import com.cava.web.domain.Cliente;
 import com.cava.web.domain.Usuario;
-import com.cava.web.dto.UsuarioDTO;
+import com.cava.web.dto.AuthDTO;
 
 @Mapper
 public interface ClienteMapper {
-	Cliente toCliente(UsuarioDTO usuarioDTO, CarroCompra carroCompra, Usuario usuario);
+	Cliente toCliente(AuthDTO authDTO, CarroCompra carroCompra, Usuario usuario);
 }

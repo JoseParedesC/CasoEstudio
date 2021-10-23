@@ -1,5 +1,6 @@
 package com.cava.web.mapper;
 
+import com.cava.web.dto.ProductCartDTO;
 import com.cava.web.dto.ProductGridDTO;
 import com.cava.web.dto.ProductoTableDTO;
 import org.springframework.stereotype.Component;
@@ -26,6 +27,9 @@ public class ProductoMapperImpl implements ProductoMapper{
 		producto.setDescripcion(productoDTO.getDescripcion());
 		producto.setFechaVencimiento(productoDTO.getFechaVencimiento());
 		producto.setPrecio(productoDTO.getPrecio());
+		producto.setPresentacion(productoDTO.getPresentacion());
+		producto.setPorcentajeAlcohol(productoDTO.getPorcentajeAlcohol());
+		producto.setContenido(productoDTO.getContenido());
 		return producto;
 	}
 
@@ -45,6 +49,9 @@ public class ProductoMapperImpl implements ProductoMapper{
 		productoDTO.setFoto(producto.getFoto());
 		productoDTO.setVendedor(producto.getVendedor());
 		productoDTO.setPrecio(producto.getPrecio());
+		productoDTO.setContenido(producto.getContenido());
+		productoDTO.setPresentacion(producto.getPresentacion());
+		productoDTO.setPorcentajeAlcohol(producto.getPorcentajeAlcohol());
 		return productoDTO;
 	}
 
@@ -74,5 +81,18 @@ public class ProductoMapperImpl implements ProductoMapper{
 		productoTableDTO.setCategoria(producto.getCategoria().getNombre());
 		productoTableDTO.setFechaVencimiento(producto.getFechaVencimiento());
 		return productoTableDTO;
+	}
+
+	@Override
+	public ProductCartDTO toProductCartDTO(Producto producto) {
+		if(producto == null)
+			return null;
+		ProductCartDTO productCartDTO = new ProductCartDTO();
+		productCartDTO.setId(producto.getId());
+		productCartDTO.setNombre(producto.getNombre());
+		productCartDTO.setPrecio(producto.getPrecio());
+		productCartDTO.setFoto(producto.getFoto());
+		productCartDTO.setVendedor(producto.getVendedor().getNombre());
+		return productCartDTO;
 	}
 }

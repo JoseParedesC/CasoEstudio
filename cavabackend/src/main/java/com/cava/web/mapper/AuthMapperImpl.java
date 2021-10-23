@@ -8,7 +8,7 @@ import com.cava.web.utilities.Constantes;
 import com.cava.web.utilities.PasswordUtil;
 
 @Component
-public class UsuarioMapperImpl extends PasswordUtil implements UsuarioMapper {
+public class AuthMapperImpl extends PasswordUtil implements AuthMapper {
 
 	@Override
 	public AuthDTO toUsuarioDTO(Usuario usuario) {
