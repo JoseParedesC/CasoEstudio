@@ -40,7 +40,7 @@ export class SignInComponent{
                 this._alert.success('Su registro ha sido exitoso');
                 this.router.navigateByUrl('/home');
             }, badRequest => {
-                this._alert.error(badRequest.error); 
+                this._alert.error(badRequest); 
             })
     }
 }

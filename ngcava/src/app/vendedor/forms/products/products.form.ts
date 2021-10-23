@@ -31,6 +31,9 @@ export class ProductoForm implements OnInit{
         this.productForm = this.formBuilder.group({
             id: [0, Validators.required],
             nombre: ['', Validators.required],
+            presentacion: ['', Validators.required],
+            contenido: ['', Validators.required],
+            porcentajeAlcohol: ['', Validators.required],
             cantidad: [0, Validators.required],
             precio: [0, Validators.required],
             codigo: ['', Validators.required],
@@ -62,12 +65,13 @@ export class ProductoForm implements OnInit{
         producto.categoria = {id : this.productForm.get('categoria').value }
         producto.foto = document.getElementById('image').getAttribute('src');
         producto.precio = this.productForm.get('precio').value.replace(/[,]/g, '');
+        producto.porcentajeAlcohol = this.productForm.get('porcentajeAlcohol').value.replace(',', '.')
         this._producto.saveProducto(producto).
             subscribe(() => {
                 this._alert.success('Se ha guardado el producto');
                 this.router.navigateByUrl('/vendedor/products');
             }, badRequest => {
-                this._alert.error('Error en el servicio. Intente más tarde');
+                this._alert.error(badRequest);
             })
     }
 
@@ -93,6 +97,9 @@ export class ProductoForm implements OnInit{
         this.productForm.get('categoria').setValue(producto.categoria.id);
         this.productForm.get('descripcion').setValue(producto.descripcion);
         this.productForm.get('vendedor').setValue(producto.vendedor.id);
+        this.productForm.get('porcentajeAlcohol').setValue(producto.porcentajeAlcohol);
+        this.productForm.get('presentacion').setValue(producto.presentacion);
+        this.productForm.get('contenido').setValue(producto.contenido);
     }
 
     setImage(event){

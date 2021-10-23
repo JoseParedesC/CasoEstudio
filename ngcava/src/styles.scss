@@ -51,6 +51,14 @@
     background: $orange;
 }
 
+.bg-gray{
+    background: $gray;
+}
+
+.bx-2x{
+    font-size: 2rem !important;
+}
+
 .full {
     width: 100%;
 }
@@ -101,6 +109,18 @@ button {
     mix-blend-mode: multiply;
 }
 
+.btn-border-orange{
+    border: 1px solid $orange;
+    border-radius: 0.7rem;
+    background: transparent;
+    color: $orange;
+}
+
+.hr-orange{
+    border: 1px solid;
+    border-color: $orange;
+}
+
 .product-grid {
     margin-top: 10px;
     display: grid;
@@ -134,6 +154,11 @@ button {
             font-size: 1rem;
         }
     }
+}
+
+.table-container{
+    min-height: 15rem;
+    overflow: auto;
 }
 
 //Router
@@ -189,6 +214,11 @@ button {
 .button:hover {
     background: $orange;
     border-color: $orange;
+}
+
+.btn:hover{
+    background: $black;
+    color: $white !important;
 }
 //End events
 // body{ background: #fff; }

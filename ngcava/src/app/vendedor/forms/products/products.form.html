@@ -9,28 +9,61 @@
         </h4>
         <form [formGroup]="productForm" (ngSubmit)="submit()">
             <div class="row">
-                <div class="col-6">
+                <div class="col-4">
                     <mat-form-field class="full">
                         <mat-label>Nombre*</mat-label>
                         <input matInput formControlName="nombre" />
                         <mat-error>Este campo es obligatorio</mat-error>
                     </mat-form-field>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
+                    <mat-form-field class="full">
+                        <mat-label>Presentación*</mat-label>
+                        <mat-select formControlName="presentacion">
+                            <mat-option [value]="'Unidad'">Unidad</mat-option>
+                            <mat-option [value]="'Six pack'">Six pack</mat-option>
+                            <mat-option [value]="'Paca'">Paca</mat-option>
+                        </mat-select>
+                        <mat-error>Este campo es obligatorio</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
                     <mat-form-field class="full">
                         <mat-label>Código*</mat-label>
                         <input matInput formControlName="codigo" />
                         <mat-error>Este campo es obligatorio</mat-error>
                     </mat-form-field>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     <mat-form-field class="full">
                         <mat-label>Cantidad*</mat-label>
                         <input matInput formControlName="cantidad" />
                         <mat-error>Este campo es obligatorio</mat-error>
                     </mat-form-field>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
+                    <mat-form-field class="full">
+                        <mat-label>Porcentaje de alcohol*</mat-label>
+                        <input matInput formControlName="porcentajeAlcohol" class="example-right-align"/>
+                        <mat-error>Este campo es obligatorio</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field class="full">
+                        <mat-label>Fecha Vencimiento*</mat-label>
+                        <input type="date" matInput formControlName="fechaVencimiento" />
+                        <mat-error>Este campo es obligatorio</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field class="full">
+                        <mat-label>Contenido*</mat-label>
+                        <input matInput formControlName="contenido" class="example-right-align"
+                            placeholder="Ej: 330ml"/>
+                        <mat-error>Este campo es obligatorio</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
                     <mat-form-field class="full">
                         <mat-label>Precio*</mat-label>
                         <input matInput formControlName="precio" class="example-right-align" placeholder="0" />
@@ -39,14 +72,7 @@
                         <mat-error>Este campo es obligatorio</mat-error>
                     </mat-form-field>
                 </div>
-                <div class="col-6">
-                    <mat-form-field class="full">
-                        <mat-label>Fecha Vencimiento*</mat-label>
-                        <input type="date" matInput formControlName="fechaVencimiento" />
-                        <mat-error>Este campo es obligatorio</mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="col-6">
+                <div class="col-4">
                     <mat-form-field class="full">
                         <mat-label>Categoria*</mat-label>
                         <mat-select formControlName="categoria">
