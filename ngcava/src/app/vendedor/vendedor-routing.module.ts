@@ -3,7 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { ProductoForm } from "./forms/products/products.form";
 import { VendedorHomeComponent } from "./home/home.component";
 import { VendedorLayoutComponent } from "./layout/layout.component";
-import { ProductsComponent } from "./products/products.component";
+import { ProductsComponent } from "./pages/products/products.component";
 import { VentasVendedorComponent } from "./ventas/ventas.component";
 
 const ROUTES : Routes = [
