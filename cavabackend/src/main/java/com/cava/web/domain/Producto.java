@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,6 +19,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+=======
+import javax.persistence.*;
+>>>>>>> 5808e5a06490f54862839a62a7a1a4f01c761bc8
 =======
 import javax.persistence.*;
 >>>>>>> 5808e5a06490f54862839a62a7a1a4f01c761bc8
