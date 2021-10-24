@@ -18,7 +18,7 @@ import com.cava.web.repository.CarroCompraRepository;
 import java.util.Optional;
 
 @Service
-public class CarroCompraItemService {
+public class CarroService {
 	//Repositorys
 	@Autowired
 	private CarroCompraItemRepository carroCompraItemRepository;

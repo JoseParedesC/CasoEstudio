@@ -66,6 +66,19 @@ public class ProductoService {
 		}
 		return productos;
 	}
+
+	public List<ProductGridDTO> getTopProducts(){
+		List<ProductGridDTO> productos = new ArrayList<>();
+		try{
+			for (Producto producto : productoRepository.findTop4()){
+				productos.add(productoMapper.toProductoGridDTO(producto));
+			}
+		}catch(Exception e){
+			productos = null;
+			e.printStackTrace();
+		}
+		return productos;
+	}
 	
 	public TableDTO findAllByIdVendedor(Long id){
 		TableDTO table = new TableDTO();
