@@ -1,50 +1,68 @@
-<div class="container" style="height: 100vh; margin-top: 8rem;">
-    <div class="d-flex justify-content-between bg-white shadow-sm p-3">
+<div class="container" style="height: 80vh; margin-top: 8rem;">
+    <div class="d-flex justify-content-between bg-white shadow-sm p-3 rounded">
         <div class="container-table-cart" style="width: 58%;">
-            <h2 class="title">Carrito de <span class="text-orange">compras.</span></h2>
-            <table class="table">
-                <thead class="text-orange">
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th></th>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <div class="d-flex justify-content-between align-items-center">
-                <button class="btn bg-dark">
+            <h2 class="text-b">Carrito de compras</h2>
+            <div *ngIf="carroCompra.productos.length == 0; else elseBlock" class="text-center">
+                <h3 class="text">No tienes productos en tu carrito</h3>
+            </div>
+            <ng-template #elseBlock>
+                <div class="table-container">
+                    <table class="table">
+                        <thead class="text-orange">
+                            <tr>
+                                <th>Foto</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let producto of carroCompra.productos">
+                                <td>
+                                    <img [src]="producto.foto" alt="">
+                                </td>
+                                <td>{{ producto.nombre }}</td>
+                                <td>{{ producto.precio | currency }}</td>
+                                <td>0</td>
+                                <td>
+                                    <i class='bx bxs-trash-alt pointer text-danger' 
+                                        (click)="deleteById(producto.id)">
+                                    </i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </ng-template>
+            <div class="text-center">
+                <button class="btn bg-dark" routerLink="/search">
                     Volver
                 </button>
-                <div>
-                    <h5 class="text-b">
-                        <span class="fw-bold">Subtotal:</span> 
-                    </h5>
-                    <h5 class="text-b">
-                        <span class="fw-bold">Total:</span> 
-                    </h5>
-                </div>
             </div>
         </div>
-        <div class="container-payment p-3 rounded" style="width: 38%; background: #171717;">
-            <h3 class="title text-light">Información de pago.</h3>
-            <hr>
-            <div class="form-group text-light text-b h4">
-                <label class="fw-bold">Método de pago</label>
-                <input type="text" class="form-control">
+        <div class="container-payment" style="width: 38%;">
+            <div class="rounded bg-dark p-3 mb-2 text-light">
+                <div class="d-flex justify-content-between text">
+                    <span class="h5">Sub total</span>
+                    <span class="h5">{{ carroCompra.total | currency }}</span>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between text">
+                    <span class="h2">Total</span>
+                    <span class="h2">{{ carroCompra.total | currency }}</span>
+                </div>
             </div>
-            <div class="form-group text-light text-b h4">
-                <label class="fw-bold">Nombre del propietario</label>
-                <input type="text" class="form-control">
+            <div class="rounded bg-dark p-3 mb-2 text-light">
+                <span class="text h5">Método de pago</span>
+                <div class="d-flex justify-content-around align-items-center">
+                    <i class='bx bxl-visa bx-2x pointer icons'></i>
+                    <i class='bx bxs-credit-card-alt bx-2x pointer icons'></i>
+                    <i class='bx bxs-credit-card bx-2x pointer icons'></i>
+                    <i class='bx bxl-mastercard bx-2x pointer icons'></i>
+                </div>
+                <button class="btn btn-border-orange btn-block rounded mt-3">Pagar</button>
             </div>
-            <div class="form-group text-light text-b h4">
-                <label class="fw-bold">Número de tarjeta</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="form-group text-light text-b h4">
-                <label class="fw-bold">Fecha de expiración</label>
-                <input type="date" class="form-control">
-            </div>
-            <button class="btn bg-orange btn-block rounded">Pagar</button>
         </div>
     </div>
 </div>

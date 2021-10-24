@@ -12,7 +12,7 @@ import { UserService } from "../../core/services/user.service";
 })
 export class GridProductComponent{
     @Input() productos : ProductoGrid[] = [];
-    cart : Carro = { producto: null, carroCompra: '' };
+    cart : Carro = { producto: null, carroCompra: '', cantidad: 1 };
     constructor(
         private _cart : CartService,
         private _user : UserService,
@@ -21,12 +21,13 @@ export class GridProductComponent{
 
     addProductToCart(producto : ProductoGrid){
         if(this.isClient()){
-            this.cart.carroCompra = { id : this._user.getUser().carroCompra['id'] };
+            this.cart.carroCompra = { id : this._user.getUser().carro };
+            this.cart.producto = { id: producto.id };
             this._cart.saveItem(this.cart)
                 .subscribe(() => {
                     this._alert.success(`Agregaste ${producto.nombre} a tu carrito`);
                 }, badRequest => {
-                    this._alert.error(badRequest.error);
+                    this._alert.error(badRequest);
                 })
         }else{
             this._alert.info("Inicia sesión para añadir productos al carrito");
@@ -35,7 +36,7 @@ export class GridProductComponent{
 
     isClient(){
         if(this._user.getUser()){
-            return this._user.getUser().usuario['rol'].toUpperCase() == 'cliente'.toUpperCase();
+            return this._user.getUser().rol.toUpperCase() == 'cliente'.toUpperCase();
         }
         return false;
     }

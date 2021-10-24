@@ -25,6 +25,7 @@ public class CarroCompraItemMapperImpl implements CarroCompraItemMapper {
 		carroCompraItem.setId(0L);
 		carroCompraItem.setProducto(productoMapper.toProducto(carroCompraItemDTO.getProducto()));
 		carroCompraItem.setCarroCompra(carroCompraMapper.toCarroCompra(carroCompraItemDTO.getCarroCompra()));
+		carroCompraItem.setCantidad(carroCompraItemDTO.getCantidad());
 		carroCompraItem.setCreated(new Date());
 		return carroCompraItem;
 	}

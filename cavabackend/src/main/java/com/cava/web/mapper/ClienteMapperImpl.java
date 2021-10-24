@@ -5,22 +5,22 @@ import org.springframework.stereotype.Component;
 import com.cava.web.domain.CarroCompra;
 import com.cava.web.domain.Cliente;
 import com.cava.web.domain.Usuario;
-import com.cava.web.dto.UsuarioDTO;
+import com.cava.web.dto.AuthDTO;
 
 @Component
 public class ClienteMapperImpl implements ClienteMapper {
 
 	@Override
-	public Cliente toCliente(UsuarioDTO usuarioDTO, CarroCompra carroCompra, Usuario usuario) {
-		if(usuarioDTO == null)
+	public Cliente toCliente(AuthDTO authDTO, CarroCompra carroCompra, Usuario usuario) {
+		if(authDTO == null)
 			return null;
 		Cliente cliente = new Cliente();
-		cliente.setId(usuarioDTO.getId());
-		cliente.setNombre(usuarioDTO.getNombre());
+		cliente.setId(authDTO.getId());
+		cliente.setNombre(authDTO.getNombre());
 		cliente.setCarroCompra(carroCompra);
-		cliente.setNroDocumento(usuarioDTO.getNroDocumento());
-		cliente.setTelefono(usuarioDTO.getTelefono());
-		cliente.setTipoDocumento(usuarioDTO.getTipoDocumento());
+		cliente.setNroDocumento(authDTO.getNroDocumento());
+		cliente.setTelefono(authDTO.getTelefono());
+		cliente.setTipoDocumento(authDTO.getTipoDocumento());
 		cliente.setUsuario(usuario);
 		return cliente;
 	}

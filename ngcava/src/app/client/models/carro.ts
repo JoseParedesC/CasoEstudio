@@ -1,8 +1,9 @@
 import { Productos } from "src/app/shared/models/Productos";
 
 export interface Carro{
-    producto: Productos,
-    carroCompra: any
+    producto: any,
+    carroCompra: any,
+    cantidad: number
 }
 
 interface CarroPadre{

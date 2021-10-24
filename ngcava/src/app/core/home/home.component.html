@@ -102,7 +102,7 @@
 </div>
 <app-footer></app-footer>
 <div class="container-vendedor d-flex justify-content-center align-items-center pointer">
-    <i class='bx bx-question-mark text-light' [matMenuTriggerFor]="menu"></i>
+    <span class="material-icons text-light" [matMenuTriggerFor]="menu">people</span>
     <mat-menu #menu="matMenu">
         <button routerLink="/login" mat-menu-item>Quiero inciar sesión como vendedor</button>
         <button routerLink="/sign-in" mat-menu-item>Quiero registrarme como vendedor</button>

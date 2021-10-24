@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit{
 
     getUser(){
         if(this._user.getUser()){
-            this.isVisible = this._user.getUser().usuario['rol'].toUpperCase() === 'cliente'.toUpperCase() ? true : false;
+            this.isVisible = this._user.getUser().rol.toUpperCase() === 'cliente'.toUpperCase() ? true : false;
         }
     }
 }

@@ -6,16 +6,15 @@ import java.util.List;
 public class CarroCompraDTO {
 	private Long id;
 	private Double total;
-	private List<CarroCompraItemDTO> carroCompraItem;
+	private List<ProductCartDTO> productos;
 	private Date created;
 	
 	public CarroCompraDTO() {}
 
-	public CarroCompraDTO(Long id, Double total, List<CarroCompraItemDTO> carroCompraItem, Date created) {
-		super();
+	public CarroCompraDTO(Long id, Double total, List<ProductCartDTO> productos, Date created) {
 		this.id = id;
 		this.total = total;
-		this.carroCompraItem = carroCompraItem;
+		this.productos = productos;
 		this.created = created;
 	}
 
@@ -35,12 +34,12 @@ public class CarroCompraDTO {
 		this.total = total;
 	}
 
-	public List<CarroCompraItemDTO> getCarroCompraItem() {
-		return carroCompraItem;
+	public List<ProductCartDTO> getProductos() {
+		return productos;
 	}
 
-	public void setCarroCompraItem(List<CarroCompraItemDTO> carroCompraItem) {
-		this.carroCompraItem = carroCompraItem;
+	public void setProductos(List<ProductCartDTO> productos) {
+		this.productos = productos;
 	}
 
 	public Date getCreated() {

@@ -6,23 +6,23 @@ import org.springframework.stereotype.Component;
 
 import com.cava.web.domain.Usuario;
 import com.cava.web.domain.Vendedor;
-import com.cava.web.dto.UsuarioDTO;
+import com.cava.web.dto.AuthDTO;
 
 @Component
 public class VendedorMapperImpl implements VendedorMapper {
 
 	@Override
-	public Vendedor toVendedor(UsuarioDTO usuarioDTO, Usuario usuario) {
-		if(usuarioDTO == null)
+	public Vendedor toVendedor(AuthDTO authDTO, Usuario usuario) {
+		if(authDTO == null)
 			return null;
 		Vendedor vendedor = new Vendedor();
-		vendedor.setId(usuarioDTO.getId());
-		vendedor.setNombre(usuarioDTO.getNombre());
-		vendedor.setApellido(usuarioDTO.getApellido());
-		vendedor.setDireccion(usuarioDTO.getDireccion());
-		vendedor.setNroDocumento(usuarioDTO.getNroDocumento());
-		vendedor.setTelefono(usuarioDTO.getTelefono());
-		vendedor.setTipoDocumento(usuarioDTO.getTipoDocumento());
+		vendedor.setId(authDTO.getId());
+		vendedor.setNombre(authDTO.getNombre());
+		vendedor.setApellido(authDTO.getApellido());
+		vendedor.setDireccion(authDTO.getDireccion());
+		vendedor.setNroDocumento(authDTO.getNroDocumento());
+		vendedor.setTelefono(authDTO.getTelefono());
+		vendedor.setTipoDocumento(authDTO.getTipoDocumento());
 		vendedor.setUsuario(usuario);
 		vendedor.setCreated(new Date());
 		return vendedor;

@@ -1,17 +1,31 @@
 <div class="container">
     <div class="d-flex align-items-center justify-content-center">
         <div class="container-img">
-            <div class="card shadow-sm">
+            <div>
                 <img class="rounded no-bg" [src]="producto?.foto" width="100%" height="100%">
             </div>
         </div>
         <div class="container-info">
             <h4 class="text-b text-orange">{{ producto?.vendedor['nombre'] | uppercase }}</h4>
-            <h2 class="title">{{ producto?.nombre }}</h2>
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h3 class="title">{{ producto?.nombre }}</h3>
+                    <div class="text-b mb-2">
+                        <h5>{{ producto?.porcentajeAlcohol}}% alc. | {{ producto?.contenido }}</h5>
+                    </div>
+                </div>
+                <h3 class="text-b">{{ producto?.precio | currency }}</h3>
+            </div>
             <p class="text-b h4">
                 {{ producto?.descripcion }}
             </p>
-            <h3 class="text-b">{{ producto?.precio | currency }}</h3>
+            <div class="hr-orange mt-3 mb-3"></div>
+            <div>
+                <h5 class="title">Presentación</h5>
+                <div class="card-presentation text-center mt-3 mb-3">
+                    {{ producto?.presentacion }}
+                </div>
+            </div>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="container-cant">
                     <div class="shadow-sm d-flex justify-content-around align-items-center">

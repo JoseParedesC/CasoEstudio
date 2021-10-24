@@ -10,6 +10,9 @@ public class ProductoDTO {
 	private Long id;
 	private String nombre;
 	private Integer cantidad;
+	private String presentacion;
+	private String contenido;
+	private Double porcentajeAlcohol;
 	private Double precio;
 	private String codigo;
 	private Date created;
@@ -22,13 +25,13 @@ public class ProductoDTO {
 	
 	public ProductoDTO() {}
 
-	public ProductoDTO(Long id, String nombre, Integer cantidad, Double precio, String codigo, Date created,
-			Date fechaVencimiento, CategoriaProducto categoria, Vendedor vendedor,
-			List<CarroCompraItemDTO> carroCompraItem, String descripcion, String foto) {
-		super();
+	public ProductoDTO(Long id, String nombre, Integer cantidad, String presentacion, String contenido, Double porcentajeAlcohol, Double precio, String codigo, Date created, Date fechaVencimiento, CategoriaProducto categoria, Vendedor vendedor, List<CarroCompraItemDTO> carroCompraItem, String descripcion, String foto) {
 		this.id = id;
 		this.nombre = nombre;
 		this.cantidad = cantidad;
+		this.presentacion = presentacion;
+		this.contenido = contenido;
+		this.porcentajeAlcohol = porcentajeAlcohol;
 		this.precio = precio;
 		this.codigo = codigo;
 		this.created = created;
@@ -62,6 +65,30 @@ public class ProductoDTO {
 
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
+	}
+
+	public String getPresentacion() {
+		return presentacion;
+	}
+
+	public void setPresentacion(String presentacion) {
+		this.presentacion = presentacion;
+	}
+
+	public String getContenido() {
+		return contenido;
+	}
+
+	public void setContenido(String contenido) {
+		this.contenido = contenido;
+	}
+
+	public Double getPorcentajeAlcohol() {
+		return porcentajeAlcohol;
+	}
+
+	public void setPorcentajeAlcohol(Double porcentajeAlcohol) {
+		this.porcentajeAlcohol = porcentajeAlcohol;
 	}
 
 	public Double getPrecio() {

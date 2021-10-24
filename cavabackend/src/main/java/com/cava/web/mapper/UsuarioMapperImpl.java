@@ -1,36 +1,52 @@
 package com.cava.web.mapper;
 
-import org.springframework.stereotype.Component;
-
-import com.cava.web.domain.Usuario;
+import com.cava.web.domain.Administrador;
+import com.cava.web.domain.Cliente;
+import com.cava.web.domain.Vendedor;
 import com.cava.web.dto.UsuarioDTO;
 import com.cava.web.utilities.Constantes;
-import com.cava.web.utilities.PasswordUtil;
+import org.springframework.stereotype.Component;
+
+import java.util.Locale;
 
 @Component
-public class UsuarioMapperImpl extends PasswordUtil implements UsuarioMapper {
+public class UsuarioMapperImpl implements UsuarioMapper{
+    @Override
+    public UsuarioDTO fromClienteToUsuarioDTO(Cliente cliente) {
+        if(cliente == null){
+            return null;
+        }
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        usuarioDTO.setId(cliente.getId());
+        usuarioDTO.setNombre(cliente.getNombre());
+        usuarioDTO.setCarro(cliente.getCarroCompra().getId());
+        usuarioDTO.setRol(Constantes.CLIENTE.getValue().toLowerCase());
+        return usuarioDTO;
+    }
 
-	@Override
-	public UsuarioDTO toUsuaarioDTO(Usuario usuario) {
-		if(usuario == null)
-			return null;
-		UsuarioDTO usuarioDTO = new UsuarioDTO();
-		
-		return usuarioDTO;
-	}
+    @Override
+    public UsuarioDTO fromVendedorToUsuarioDTO(Vendedor vendedor) {
+        if(vendedor == null){
+            return null;
+        }
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        usuarioDTO.setId(vendedor.getId());
+        usuarioDTO.setNombre(vendedor.getNombre());
+        usuarioDTO.setCarro(null);
+        usuarioDTO.setRol(Constantes.VENDEDOR.getValue().toLowerCase());
+        return usuarioDTO;
+    }
 
-	@Override
-	public Usuario toUsuario(UsuarioDTO usuarioDTO) {
-		if(usuarioDTO == null)
-			return null;
-		Usuario usuario = new Usuario();
-		usuario.setId(usuarioDTO.getId());
-		usuario.setUsername(usuarioDTO.getEmail());
-		usuario.setPassword(hashPassword(usuarioDTO.getPassword()));
-		usuario.setRol(usuarioDTO.getRol());
-		usuario.setIdentificador(usuarioDTO.getNroDocumento());
-		usuario.setEstado(Constantes.HABILITADO.getValue());
-		return usuario;
-	}
-
+    @Override
+    public UsuarioDTO fromAdministradorToUsuarioDTO(Administrador administrador) {
+        if(administrador == null){
+            return null;
+        }
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        usuarioDTO.setId(administrador.getId());
+        usuarioDTO.setNombre(administrador.getNombre());
+        usuarioDTO.setCarro(null);
+        usuarioDTO.setRol(Constantes.ADMIN.getValue().toLowerCase());
+        return usuarioDTO;
+    }
 }

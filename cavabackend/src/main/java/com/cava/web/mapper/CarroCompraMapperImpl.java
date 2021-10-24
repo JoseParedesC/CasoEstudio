@@ -3,6 +3,8 @@ package com.cava.web.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cava.web.dto.ProductCartDTO;
+import com.cava.web.dto.ProductoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,19 +17,20 @@ import com.cava.web.dto.CarroCompraItemDTO;
 public class CarroCompraMapperImpl implements CarroCompraMapper {
 	//Mappers
 	@Autowired
-	private CarroCompraItemMapperImpl carroCompraItemMapper;
+	private ProductoMapperImpl productoMapper;
 	
 	@Override
 	public CarroCompraDTO toCarroCompraDTO(CarroCompra carroCompra) {
-		List<CarroCompraItemDTO> items = new ArrayList<CarroCompraItemDTO>();
+		List<ProductCartDTO> productoDTOS = new ArrayList<ProductCartDTO>();
 		if(carroCompra == null)
 			return null;
 		CarroCompraDTO carroCompraDTO = new CarroCompraDTO();
 		carroCompraDTO.setId(carroCompra.getId());
 		for(CarroCompraItem item : carroCompra.getCarroCompraItem()) {
-			items.add(carroCompraItemMapper.toCarroCompraItemDTO(item));
+			productoDTOS.add(productoMapper.toProductCartDTO(item.getProducto()));
 		}
-		carroCompraDTO.setCarroCompraItem(items);
+		carroCompraDTO.setProductos(productoDTOS);
+		carroCompraDTO.setTotal(carroCompra.getTotal());
 		carroCompraDTO.setCreated(carroCompra.getCreated());
 		return carroCompraDTO;
 	}

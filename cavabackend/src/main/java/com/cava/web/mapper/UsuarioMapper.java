@@ -1,12 +1,14 @@
 package com.cava.web.mapper;
 
-import org.mapstruct.Mapper;
-
-import com.cava.web.domain.Usuario;
+import com.cava.web.domain.Administrador;
+import com.cava.web.domain.Cliente;
+import com.cava.web.domain.Vendedor;
 import com.cava.web.dto.UsuarioDTO;
+import org.mapstruct.Mapper;
 
 @Mapper
 public interface UsuarioMapper {
-	UsuarioDTO toUsuaarioDTO(Usuario usuario);
-	Usuario toUsuario(UsuarioDTO usuarioDTO);
+    UsuarioDTO fromClienteToUsuarioDTO(Cliente cliente);
+    UsuarioDTO fromVendedorToUsuarioDTO(Vendedor vendedor);
+    UsuarioDTO fromAdministradorToUsuarioDTO(Administrador administrador);
 }

@@ -15,7 +15,6 @@ export class LoginComponent{
     loginForm: FormGroup;
     constructor(
         private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
         private router: Router, 
         private _auth: AuthService,
         private _alert : AlertService,
@@ -30,7 +29,7 @@ export class LoginComponent{
     login(){
         this._auth.loginUser(this.loginForm.value)
             .subscribe((response : any) => {
-                const tipoPersona = response.body.usuario['rol'];
+                const tipoPersona = response.body.rol;
                 this._user.setUser(response.body);
                 if(tipoPersona.toUpperCase() == 'vendedor'.toUpperCase() ||
                     tipoPersona.toUpperCase() == 'administrador'.toUpperCase()){
@@ -39,7 +38,7 @@ export class LoginComponent{
                     this.router.navigateByUrl('/home');
                 }
             }, badRequest => {
-                this._alert.error(badRequest.error);
+                this._alert.error(badRequest);
             })
     }
 }
