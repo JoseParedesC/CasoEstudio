@@ -1,10 +1,9 @@
 import { Component, Input } from "@angular/core";
 import { ProductoGrid } from "src/app/shared/models/ProductoGrid";
-import { Productos } from "src/app/shared/models/Productos";
-import { Carro } from "../models/carro";
-import { AlertService } from "../../core/services/alert.service";
-import { CartService } from "../service/cart.service";
-import { UserService } from "../../core/services/user.service";
+import { Carro } from "../../client/models/carro";
+import { AlertService } from "../services/alert.service";
+import { CartService } from "../../client/service/cart.service";
+import { UserService } from "../services/user.service";
 
 @Component({
     selector: 'app-grid-product',

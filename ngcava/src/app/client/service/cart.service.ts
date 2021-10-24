@@ -17,7 +17,7 @@ export class CartService{
     }
 
     deleteItem(id : number, idCarro : number){
-        return this.http.delete(`${this.url}/${id}/carro${idCarro}`)
+        return this.http.delete(`${this.url}/${id}/carro/${idCarro}`)
             .pipe(catchError(HandleHttpError));
     }
 

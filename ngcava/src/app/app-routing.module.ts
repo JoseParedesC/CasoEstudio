@@ -6,7 +6,7 @@ import { LayoutComponent } from './core/layout/layout.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { ProfileComponent } from './client/profile/profile.component';
-import { SearchComponent } from './client/search/search.component';
+import { SearchComponent } from './core/search/search.component';
 import { ShoppingCartComponent } from './client/shopping-cart/shopping-cart.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 

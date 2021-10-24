@@ -1,5 +1,5 @@
 <div class="product-grid" *ngIf="productos.length > 0; else elseBlock">
-    <div *ngFor="let producto of productos" class="card shadow-sm" >
+    <div *ngFor="let producto of productos" class="card shadow-sm">
         <div class="img-container" [routerLink]="'/detail/' + producto.id">
             <img class="no-bg" [src]="producto.foto">
         </div>

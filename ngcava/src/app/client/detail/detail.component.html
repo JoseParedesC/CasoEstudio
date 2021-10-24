@@ -34,12 +34,12 @@
                         <i (click)="plusCant()" class='bx bx-plus text-orange pointer'></i>
                     </div>
                 </div>
-                <button class="bg-orange btn">
+                <button class="bg-orange btn" (click)="addToCart()">
                     <i class='bx bx-cart'></i>
                     Añadir al carrito
                 </button>
             </div>
-            <button routerLink="/search" class="btn btn-block bg-dark">Volver</button>
+            <button (click)="back()" class="btn btn-block bg-dark">Volver</button>
         </div>
     </div>
 </div>

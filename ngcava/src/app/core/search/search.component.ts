@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductoGrid } from "src/app/shared/models/ProductoGrid";
 import { ProductService } from "src/app/shared/services/producto.service";
-import { Categoria } from "../../core/models/categoria";
-import { AlertService } from "../../core/services/alert.service";
-import { CategoriaService } from "../../core/services/categoria.service";
+import { Categoria } from "../models/categoria";
+import { AlertService } from "../services/alert.service";
+import { CategoriaService } from "../services/categoria.service";
 
 @Component({
     selector: 'app-search',

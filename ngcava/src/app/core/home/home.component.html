@@ -3,44 +3,7 @@
         <h4 class="title text-light h1">La cava D&D</h4>
     </div>
     <div class="galery-container">
-        <div class="container d-flex justify-content-between">
-            <div class="card shadow-sm" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Esto es un producto</h5>
-                    <p class="card-text">
-                        {{ 1000 | currency: 'USD' }}
-                    </p>
-                </div>
-            </div>
-            <div class="card shadow-sm" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Esto es un producto</h5>
-                    <p class="card-text">
-                        {{ 1000 | currency: 'USD' }}
-                    </p>
-                </div>
-            </div>
-            <div class="card shadow-sm" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Esto es un producto</h5>
-                    <p class="card-text">
-                        {{ 1000 | currency: 'USD' }}
-                    </p>
-                </div>
-            </div>
-            <div class="card shadow-sm" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Esto es un producto</h5>
-                    <p class="card-text">
-                        {{ 1000 | currency: 'USD' }}
-                    </p>
-                </div>
-            </div>
-        </div>
+        <app-grid-product [productos]="productos"></app-grid-product>
     </div>
     <div class="hr title h2">Los productos que usted necesita</div>
     <div class="sub-hr text text-dark mb-4 mt-4">No busque más</div>

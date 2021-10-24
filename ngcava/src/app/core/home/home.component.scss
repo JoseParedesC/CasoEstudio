@@ -15,11 +15,9 @@
     }
 
     .galery-container{
-        padding: 20px;
+        display: flex;
+        justify-content: center;
         margin: 40px 0;
-        .card{
-            margin: 0 5px;
-        }
     }
 
     .info-container{

@@ -65,7 +65,7 @@ export class ProductoForm implements OnInit{
         producto.categoria = {id : this.productForm.get('categoria').value }
         producto.foto = document.getElementById('image').getAttribute('src');
         producto.precio = this.productForm.get('precio').value.replace(/[,]/g, '');
-        producto.porcentajeAlcohol = this.productForm.get('porcentajeAlcohol').value.replace(',', '.')
+        //producto.porcentajeAlcohol = this.productForm.get('porcentajeAlcohol').value.replace(',', '.');
         this._producto.saveProducto(producto).
             subscribe(() => {
                 this._alert.success('Se ha guardado el producto');
