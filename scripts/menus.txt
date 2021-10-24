@@ -1,0 +1,14 @@
+//Inserts para los menus de administrador
+INSERT INTO public.menus(created, nombre, path, tipo_rol, icons)
+	VALUES (NOW(), 'Home', '/administrador/home', 'Administrador', 'home');
+INSERT INTO public.menus(created, nombre, path, tipo_rol, icons)
+	VALUES (NOW(), 'Categorias', '/administrador/categorias', 'Administrador', 'category');
+INSERT INTO public.menus(created, nombre, path, tipo_rol, icons)
+	VALUES (NOW(), 'Vendedores', '/administrador/vendedores', 'Administrador', 'person');
+INSERT INTO public.menus(created, nombre, path, tipo_rol, icons)
+	VALUES (NOW(), 'Seguimiento Ventas', '/administrador/seguimiento', 'Administrador', 'sell');
+
+//Insert para los menus de vendedor
+insert into menus (nombre, created, path, tipo_rol, icons) values('Home', now(), '/home', 'Vendedor', 'home');
+insert into menus (nombre, created, path, tipo_rol, icons) values('Productos', now(), '/products', 'Vendedor', 'inventory_2');
+insert into menus (nombre, created, path, tipo_rol, icons) values('Ventas', now(), '/ventas', 'Vendedor', 'sell');
