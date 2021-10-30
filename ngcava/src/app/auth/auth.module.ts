@@ -14,10 +14,6 @@ import { SignInComponent } from "./sign-in/sign-in.component";
         SharedModule,
         MaterialModule
     ],
-    exports: [
-        LoginComponent,
-        SignInComponent
-    ],
     providers: [
         AuthService
     ]

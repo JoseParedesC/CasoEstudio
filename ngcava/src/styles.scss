@@ -42,11 +42,6 @@
     min-height: 200px;
 }
 
-.card:hover{
-    transition: box-shadow .1s ease-out;
-    box-shadow: 0 7px 16px 0 rgb(0 0 0 / 20%), 0 1px 3px 0 rgb(0 0 0 / 10%);
-}
-
 .bg-orange {
     background: $orange;
 }
@@ -116,6 +111,11 @@ button {
     color: $orange;
 }
 
+.border-orange{
+    border: 1px solid $orange;
+    border-radius: 0.5rem;
+}
+
 .hr-orange{
     border: 1px solid;
     border-color: $orange;
@@ -159,6 +159,16 @@ button {
 .table-container{
     min-height: 15rem;
     overflow: auto;
+}
+
+.container-cant{
+    div{
+        background: $white;
+        height: 2.6rem;
+        width: 5rem;
+        border: 1px solid $white;
+        border-radius: 0.3rem;
+    }
 }
 
 //Router

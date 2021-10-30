@@ -16,11 +16,6 @@ import { ShoppingCartComponent } from "./shopping-cart/shopping-cart.component";
         SharedModule,
         MaterialModule
     ],
-    exports: [
-        DetailComponent,
-        ProfileComponent,
-        ShoppingCartComponent
-    ],
     providers: [
         CartService
     ]

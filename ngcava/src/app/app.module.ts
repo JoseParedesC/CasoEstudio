@@ -6,12 +6,12 @@ import { CoreModule } from './core/core.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthModule } from './auth/auth.module';
+import { ClientModule } from './client/client.module';
 //Componentes
 import { AppComponent } from './app.component';
 import { AlertComponent } from './shared/alert/alert.component';
 import { AuthInterceptorService } from './auth/service/auth.interceptor';
-import { AuthModule } from './auth/auth.module';
-import { ClientModule } from './client/client.module';
 
 @NgModule({
   declarations: [

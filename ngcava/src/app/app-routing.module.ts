@@ -15,12 +15,12 @@ const ROUTES : Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: '/home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'search', component: SearchComponent },
             { path: 'profile', component: ProfileComponent },
             { path: 'detail/:id', component: DetailComponent },
-            { path: 'cart', component: ShoppingCartComponent }
+            { path: 'cart', component: ShoppingCartComponent },
+            { path: '', redirectTo: '/home', pathMatch: 'full' },
         ]
     },
     { path: 'login', component: LoginComponent },

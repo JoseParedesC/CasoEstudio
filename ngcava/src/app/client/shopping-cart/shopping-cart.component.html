@@ -7,61 +7,98 @@
             </div>
             <ng-template #elseBlock>
                 <div class="table-container">
-                    <table class="table">
-                        <thead class="text-orange">
-                            <tr>
-                                <th>Foto</th>
-                                <th>Producto</th>
-                                <th>Precio</th>
-                                <th>Cantidad</th>
-                                <th>Eliminar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let producto of carroCompra.productos">
-                                <td>
-                                    <img [src]="producto.foto" alt="">
-                                </td>
-                                <td>{{ producto.nombre }}</td>
-                                <td>{{ producto.precio | currency }}</td>
-                                <td>0</td>
-                                <td>
-                                    <i class='bx bxs-trash-alt pointer text-danger' 
-                                        (click)="deleteById(producto.id)">
-                                    </i>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="d-flex justify-content-between align-items-center mb-3 mt-3 shadow-sm p-3"
+                        *ngFor="let producto of carroCompra.productos; let i = index">
+                        <div class="pointer d-flex" [routerLink]="'../detail/'+producto.id">
+                            <img [src]="producto.foto" width="50rem" height="70rem">
+                            <h3 class="text ml-3">{{ producto.nombre }}</h3>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="container-cant mr-3">
+                                <div class="shadow-sm d-flex justify-content-around align-items-center">
+                                    <i (click)="minusCant(producto.id, producto.cantidad)"
+                                        class='bx bx-minus text-orange pointer'></i>
+                                    <span class="text text-orange">{{ producto.cantidad }}</span>
+                                    <i (click)="plusCant(producto.id)" class='bx bx-plus text-orange pointer'></i>
+                                </div>
+                            </div>
+                            <h4 class="text" style="margin: 0;">{{ producto.precio | currency }}</h4>
+                            <i class='bx bx-x pointer ml-2 text-danger' (click)="deleteById(producto.id)">
+                            </i>
+                        </div>
+                    </div>
                 </div>
             </ng-template>
-            <div class="text-center">
-                <button class="btn bg-dark" routerLink="/search">
-                    Volver
-                </button>
-            </div>
+            <button class="btn btn-border-orange rounded" routerLink="/search">
+                Volver
+            </button>
         </div>
         <div class="container-payment" style="width: 38%;">
-            <div class="rounded bg-dark p-3 mb-2 text-light">
-                <div class="d-flex justify-content-between text">
-                    <span class="h5">Sub total</span>
-                    <span class="h5">{{ carroCompra.total | currency }}</span>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between text">
-                    <span class="h2">Total</span>
-                    <span class="h2">{{ carroCompra.total | currency }}</span>
-                </div>
-            </div>
-            <div class="rounded bg-dark p-3 mb-2 text-light">
-                <span class="text h5">Método de pago</span>
-                <div class="d-flex justify-content-around align-items-center">
-                    <i class='bx bxl-visa bx-2x pointer icons'></i>
-                    <i class='bx bxs-credit-card-alt bx-2x pointer icons'></i>
-                    <i class='bx bxs-credit-card bx-2x pointer icons'></i>
-                    <i class='bx bxl-mastercard bx-2x pointer icons'></i>
-                </div>
-                <button class="btn btn-border-orange btn-block rounded mt-3">Pagar</button>
+            <div class="rounded p-3 mb-2 shadow-sm bg-dark text-light">
+                <form [formGroup]="carroForm" (ngSubmit)="saveShop()">
+                    <h5 class="text-light title">Detalle de tarjeta</h5>
+                    <span class="text h5">Método de pago</span>
+                    <div class="d-flex justify-content-around align-items-center">
+                        <i (click)="selectMethodPay('visa')"
+                            [ngClass]="{ 'active_router' : isSelect('visa') }"
+                            class='bx bxl-visa bx-2x pointer icons'>
+                        </i>
+                        <i (click)="selectMethodPay('tarjeta_credito')"
+                            [ngClass]="{ 'active_router' : isSelect('tarjeta_credito') }"
+                            class='bx bxs-credit-card-alt bx-2x pointer icons'></i>
+                        <i (click)="selectMethodPay('tarjeta_debito')"
+                            [ngClass]="{ 'active_router' : isSelect('tarjeta_debito') }"
+                            class='bx bxs-credit-card bx-2x pointer icons'></i>
+                        <i (click)="selectMethodPay('mastercard')"
+                            [ngClass]="{ 'active_router' : isSelect('mastercard') }"
+                            class='bx bxl-mastercard bx-2x pointer icons'></i>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="text h5">Nombre del propietario</span>
+                            <input type="text" class="form-control text-light" formControlName="nombrePropietario">
+                        </div>
+                        <div class="col-12">
+                            <span class="text h5">Número de la tarjeta</span>
+                            <input type="text" class="form-control text-light" formControlName="numeroTarjeta">
+                        </div>
+                        <div class="col-6">
+                            <span class="text h5">Fecha de expiración</span>
+                            <input type="text" class="form-control text-light" formControlName="fechaExpiracion"
+                                placeholder="01/24" maxlength="5">
+                        </div>
+                        <div class="col-6 ">
+                            <span class="text h5">CVV</span>
+                            <input type="text" class="form-control text-light" formControlName="cvv" maxlength="4">
+                        </div>
+                        <h5 class="title mt-3 text-light">Detalle de entrega</h5>
+                        <div class="col-12">
+                            <span class="text h5">Telefono de contacto</span>
+                            <input type="text" class="form-control text-light" formControlName="telefonoContacto">
+                        </div>
+                        <div class="col-12">
+                            <span class="text h5">Dirección</span>
+                            <input type="text" class="form-control text-light" formControlName="direccion">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <span>Subtotal:</span>
+                        <span>{{ carroCompra.total | currency }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Total:</span>
+                        <span>{{ carroCompra.total | currency }}</span>
+                    </div>
+                    <button class="d-flex justify-content-between btn btn-border-orange btn-block rounded mt-3"
+                        [disabled]="!carroForm.valid"
+                        type="submit">
+                        {{ carroCompra.total | currency }}
+                        <span>
+                            Pagar
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </span>
+                    </button>
+                </form>
             </div>
         </div>
     </div>

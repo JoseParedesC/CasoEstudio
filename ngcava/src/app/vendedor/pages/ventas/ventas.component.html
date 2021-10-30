@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">
+            Mis ventas
+        </h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div class="container-search">
+                <i class='bx bx-search-alt'></i>
+                <input type="text" class="search text" placeholder="Busca aquí...">
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let venta of ventas">
+                        <td>{{ venta.cliente }}</td>
+                        <td>{{ venta.producto }}</td>
+                        <td>{{ venta.cantidad }}</td>
+                        <td>{{ venta.total | currency }}</td>
+                        <td>
+                            <i class='bx bx-detail text-primary pointer'></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <mat-paginator [length]="totalElements" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

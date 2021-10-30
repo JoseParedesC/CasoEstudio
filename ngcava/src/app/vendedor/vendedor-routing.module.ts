@@ -4,7 +4,7 @@ import { ProductoForm } from "./forms/products/products.form";
 import { VendedorHomeComponent } from "./home/home.component";
 import { VendedorLayoutComponent } from "./layout/layout.component";
 import { ProductsComponent } from "./pages/products/products.component";
-import { VentasVendedorComponent } from "./ventas/ventas.component";
+import { VentasVendedorComponent } from "./pages/ventas/ventas.component";
 
 const ROUTES : Routes = [
     {

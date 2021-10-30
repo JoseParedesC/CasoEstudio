@@ -29,7 +29,7 @@ export class ProductoForm implements OnInit{
         private pipe : CurrencyPipe
     ){
         this.productForm = this.formBuilder.group({
-            id: [0, Validators.required],
+            id: [0],
             nombre: ['', Validators.required],
             presentacion: ['', Validators.required],
             contenido: ['', Validators.required],
@@ -41,7 +41,7 @@ export class ProductoForm implements OnInit{
             categoria: ['', Validators.required],
             vendedor: [''],
             descripcion: ['', Validators.required],
-            foto: [''] 
+            foto: ['']
         });
         this.id = +this.route.snapshot.params.id;
     }
