@@ -5,7 +5,12 @@ public enum Constantes {
 	VENDEDOR("Vendedor"),
 	ADMIN("Administrador"),
 	HABILITADO("Habilitado"),
-	DESHABILITADO("Deshabilitado");
+	PROCESO("En proceso"),
+	DESHABILITADO("Deshabilitado"),
+	ALMACEN("En almacen"),
+	ENVIADO("Enviada"),
+	DESPACHO("En despacho"),
+	ENTREGADO("Entragado");
 
 	private String value;
 	

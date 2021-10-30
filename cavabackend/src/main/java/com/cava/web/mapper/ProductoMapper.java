@@ -14,5 +14,5 @@ public interface ProductoMapper {
 	ProductoDTO toProductoDTO(Producto producto);
 	ProductGridDTO toProductoGridDTO(Producto producto);
 	ProductoTableDTO toProductoTableDTO(Producto producto);
-	ProductCartDTO toProductCartDTO(Producto producto);
+	ProductCartDTO toProductCartDTO(Producto producto, Integer cantidad);
 }

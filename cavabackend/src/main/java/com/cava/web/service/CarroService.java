@@ -47,7 +47,11 @@ public class CarroService {
 			if(optional.isPresent()){
 				carroCompraItem = optional.get();
 				carroCompraItem.setCantidad(carroCompraItem.getCantidad() + carroCompraItemDTO.getCantidad());
-				carroCompra.setTotal(carroCompra.getTotal() + optional.get().getProducto().getPrecio());
+				if(carroCompraItemDTO.getCantidad() > 0){
+					carroCompra.setTotal(carroCompra.getTotal() + optional.get().getProducto().getPrecio());
+				}else{
+					carroCompra.setTotal(carroCompra.getTotal() - optional.get().getProducto().getPrecio());
+				}
 			}else{
 				carroCompraItem = carroCompraItemMapper.toCarroCompraItem(carroCompraItemDTO);
 				Optional<Producto> producto = productoRepository.findById(carroCompraItem.getProducto().getId());
@@ -83,7 +87,7 @@ public class CarroService {
 			producto.setId(id);
 			CarroCompraItem carroCompraItem = carroCompraItemRepository
 						.findByProductoAndCarroCompra(producto, carroCompra).get();
-			carroCompra.setTotal(carroCompra.getTotal() -
+			carroCompra.setTotal(carroCompraItem.getCarroCompra().getTotal() -
 					carroCompraItem.getCantidad() * carroCompraItem.getProducto().getPrecio());
 			carroCompraItemRepository.deleteById(carroCompraItem.getId());
 			carroCompraRepository.save(carroCompra);
