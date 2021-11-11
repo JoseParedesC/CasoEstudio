@@ -6,10 +6,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
 import com.cava.web.domain.CategoriaProducto;
 import com.cava.web.dto.CategoriaDTO;
+import com.cava.web.dto.TableDTO;
 import com.cava.web.repository.CategoriaRepository;
 
 @Service
@@ -66,6 +69,21 @@ public class CategoriaService {
 			return false;
 		}
 		return true;
+	}
+	
+	public TableDTO findAllTable(){
+		List<CategoriaDTO> list = new ArrayList<CategoriaDTO>();
+		TableDTO table = new TableDTO();
+		try {
+			for(CategoriaProducto categoria : categoriaRepository.findAll()) {
+				list.add(new CategoriaDTO(categoria.getId(), categoria.getNombre(), categoria.getCreated()));
+			}
+			Page<?> page = new PageImpl<>(list);
+			table = new TableDTO(page.getTotalPages(), page.getTotalElements(), page.getContent());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return table;
 	}
 	
 }

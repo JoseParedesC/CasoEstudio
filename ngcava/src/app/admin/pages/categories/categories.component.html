@@ -1,0 +1,77 @@
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title ">Mis Categorias</h4>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-secondary float-right" data-bs-toggle="modal" 
+            data-bs-target="#ModalCategory">
+            Añadir
+        </button>
+        <!-- <p class="card-category">Un texto pa que trin</p> -->
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div class="container-search">
+                <i class='bx bx-search-alt'></i>
+                <input type="text" class="search text" placeholder="Busca aquí...">
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Fecha de Creacion</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let categoria of categorias">
+                        <td>{{ categoria.nombre }}</td>
+                        <td>{{ categoria.created }}</td>
+                        <td>
+                            <i class='bx bxs-pencil pointer mr-2 text-primary' (click)="getCategoriaById(categoria.id)" data-bs-toggle="modal" 
+                                data-bs-target="#ModalCategory"> 
+                            </i>
+                            <i class='bx bxs-trash-alt pointer ml-2 text-danger'
+                                (click)="deleteCategoria(categoria.id)">
+                            </i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <mat-paginator [length]="totalElements" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+            </mat-paginator>
+        </div>
+    </div>
+</div>
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="ModalCategory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalCategoryLabel">Registrar Categoria</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="categoriaForm" >
+                <div class="row">
+                    <div class="col-12">
+                        <mat-form-field class="full">
+                            <mat-label>Nombre*</mat-label>
+                            <input matInput formControlName="nombre" />
+                            <mat-error>Este campo es obligatorio</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" (click)="submit()" class="btn btn-success" [disabled]="!categoriaForm.valid">
+                        Guardar cambios
+                    </button>
+                    <button class="btn btn-secondary" id="closeModal" data-bs-dismiss="modal" aria-label="Close">
+                        Volver
+                    </button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

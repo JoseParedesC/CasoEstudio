@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cava.web.dto.CategoriaDTO;
+import com.cava.web.dto.TableDTO;
 import com.cava.web.service.CategoriaService;
 
 @RestController
@@ -40,6 +41,11 @@ public class CategoriaController {
 	@GetMapping
 	public ResponseEntity<List<CategoriaDTO>> getAll(){
 		return new ResponseEntity<>(categoriaService.findAll(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/table")
+	public ResponseEntity<TableDTO> getTable(){
+		return new ResponseEntity<>(categoriaService.findAllTable(), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
