@@ -7,7 +7,7 @@ import { VendedorHomeComponent } from "./home/home.component";
 import { VendedorLayoutComponent } from "./layout/layout.component";
 import { ProductsComponent } from "./pages/products/products.component";
 import { VendedorRoutingModule } from "./vendedor-routing.module";
-import { VentasVendedorComponent } from "./ventas/ventas.component";
+import { VentasVendedorComponent } from "./pages/ventas/ventas.component";
 
 @NgModule({
     declarations: [

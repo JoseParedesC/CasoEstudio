@@ -84,7 +84,7 @@ public class ProductoMapperImpl implements ProductoMapper{
 	}
 
 	@Override
-	public ProductCartDTO toProductCartDTO(Producto producto) {
+	public ProductCartDTO toProductCartDTO(Producto producto, Integer cantidad) {
 		if(producto == null)
 			return null;
 		ProductCartDTO productCartDTO = new ProductCartDTO();
@@ -93,6 +93,7 @@ public class ProductoMapperImpl implements ProductoMapper{
 		productCartDTO.setPrecio(producto.getPrecio());
 		productCartDTO.setFoto(producto.getFoto());
 		productCartDTO.setVendedor(producto.getVendedor().getNombre());
+		productCartDTO.setCantidad(cantidad);
 		return productCartDTO;
 	}
 }

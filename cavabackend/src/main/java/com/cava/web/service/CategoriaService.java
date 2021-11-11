@@ -70,6 +70,7 @@ public class CategoriaService {
 		}
 		return true;
 	}
+<<<<<<< HEAD
 	
 	public TableDTO findAllTable(){
 		List<CategoriaDTO> list = new ArrayList<CategoriaDTO>();
@@ -86,4 +87,6 @@ public class CategoriaService {
 		return table;
 	}
 	
+=======
+>>>>>>> d48f026fe51cd469426d348d152bbfcc11c503a7
 }

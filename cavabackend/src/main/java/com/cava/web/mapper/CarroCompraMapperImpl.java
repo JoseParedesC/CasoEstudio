@@ -27,7 +27,7 @@ public class CarroCompraMapperImpl implements CarroCompraMapper {
 		CarroCompraDTO carroCompraDTO = new CarroCompraDTO();
 		carroCompraDTO.setId(carroCompra.getId());
 		for(CarroCompraItem item : carroCompra.getCarroCompraItem()) {
-			productoDTOS.add(productoMapper.toProductCartDTO(item.getProducto()));
+			productoDTOS.add(productoMapper.toProductCartDTO(item.getProducto(), item.getCantidad()));
 		}
 		carroCompraDTO.setProductos(productoDTOS);
 		carroCompraDTO.setTotal(carroCompra.getTotal());
